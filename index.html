@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Usbedb Data Collection System - Secure and Accurate Staff Identity Management"
+    />
+    <meta
+      name="keywords"
+      content="Staff Data, Biometric, Identity Collection, Education, React App"
+    />
+    <meta name="author" content="Perttos Digital" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <title>Usbeb | Data Capture &amp; Biometric Collection System</title>
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body style="background-color: #f4f4f4; padding: 1rem">
+    <div id="root">
+      <header id="main-header">
+        <div id="header-body">
+          <div class="hbinner">
+            <div class="svg-con">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                style="color: #f4f4f4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <div class="smart-con">
+              <a>
+                <h1 class="h1Text">Usbeb Smart School</h1>
+              </a>
+              <p>Survey Data Collection System</p>
+            </div>
+          </div>
+          <nav>
+            <button>Data Entry</button>
+          </nav>
+        </div>
+      </header>
+      <main id="main">
+        <div>
+          <div class="form-header">
+            <h2>Staff Information Entry</h2>
+            <p>Please fill in all required fields accurately</p>
+          </div>
+          <form action = '/captureDevice' method = 'POST' id="myForm" enctype="multipart/form-data" style="width: 100%;">
+            <div id="form-area">
+              <h3>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  style = "color: #05c7f2;"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true",
+                  color: #05c7f2;
+                >
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                Personal Information
+              </h3>
+              <div id="form-sec1">
+                <div>
+                  <label
+                    >Full Name
+                    <span>*</span>
+                  </label>
+                  <input
+                    placeholder="Enter complete name (first, middle, last)"
+                    type="text"
+                    value=""
+                    name="fullName"
+                  />
+                </div>
+                <div>
+                  <label>Staff ID <span>*</span></label
+                  ><input
+                    placeholder="Unique alphanumeric identifier"
+                    type="text"
+                    value=""
+                    name="staffId"
+                  />
+                </div>
+                <div>
+                  <label>Date of Birth <span>*</span> </label
+                  ><input type="date" value="" name="dateOfBirth" />
+                </div>
+                <div>
+                  <label> Gender <span>*</span> </label>
+                  <select name="gender">
+                    <option value="">Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label>PPA <span class="text-red-500">*</span> </label
+                  ><input
+                    placeholder="Enter PPA"
+                    type="text"
+                    value=""
+                    name="ppa"
+                  />
+                </div>
+                <div>
+                  <label>Pupils <span>*</span></label
+                  ><input
+                    min="0"
+                    placeholder="Number of pupils"
+                    type="number"
+                    value=""
+                    name="pupils"
+                  />
+                </div>
+              </div>
+            </div>
+            <div id="form-area2">
+              <h3>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  style = "color: #05c7f2;"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"
+                  ></path>
+                  <circle cx="12" cy="13" r="3"></circle>
+                </svg>
+                Document Upload
+              </h3>
+              <div id="form-sec2-all">
+                <div id="form-sec2-text">
+                  <label>
+                  Passport Photograph
+                  <span>*</span>
+                </label>
+                </div>
+                  <div id="form-sec2">
+                    <input accept=".jpg, .jpeg, .png" name="passport" type="file" id="uploadInput" class="hidden" />
+                    <button type = "button" id = "uploadBtn">
+                      <div style="display: flex; justify-content: center;">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M12 3v12"></path>
+                          <path d="m17 8-5-5-5 5"></path>
+                          <path
+                            d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                          ></path>
+                        </svg>
+                        <span style="color:green; font-size: 0.9rem; font-family: verdana;">
+                          Upload Passport Photo
+                        </span>
+                      </div>
+                    </button>
+                  </div>
+                  <p class="form-area2-p">JPEG format only, maximum size 2MB</p>
+                </div>
+            </div>
+            <div id="form-area3">
+              <h3>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  style = "color: #05c7f2;"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                  ></path>
+                  <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                  <path d="M10 9H8"></path>
+                  <path d="M16 13H8"></path>
+                  <path d="M16 17H8"></path>
+                </svg>
+                Biometric Data (Optional)
+              </h3>
+              <div id="display-fingerprint-image" class="scannow-images-con">
+                <img src ="./images/scannow.png" id = "fingerprint-imageID" class="fingerprint-image"/>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <div class ="scanner-con">
+                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                      />
+                      <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                      <path d="M10 9H8"></path>
+                      <path d="M16 13H8"></path>
+                      <path d="M16 17H8"></path>
+                    </svg>
+                  </div>
+                  <div class="fingerprint">
+                    <h4>Fingerprint Scanner</h4>
+                    <p>
+                      Connect compatible fingerprint hardware to capture
+                      biometric data
+                    </p>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <button type="button" id="scannowID" class="scannow">Scan Now</button>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div id="form-area4">
+              <button type="button">
+                <span>Clear Form</span>
+              </button>
+              <button type="submit" id="submit">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  style="color:#f4f4f4;"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"
+                  />
+                  <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" />
+                  <path d="M7 3v4a1 1 0 0 0 1 1h7"></path>
+                </svg>
+                <span>Submit Record</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+    <script src ="./index.js"></script>
+  </body>
+</html>
