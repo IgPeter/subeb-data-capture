@@ -102,7 +102,7 @@ const handleFingerprintScanning = async () => {
     alert("Please ensure Secu Gen scanner is connected");
 
     try {
-      const response = await fetch("https://localhost:8000/SGIFPCapture", {
+      const response = await fetch("http://localhost:8000/SGIFPCapture", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -125,6 +125,7 @@ const handleFingerprintScanning = async () => {
         alert(`${result.errorDescription}`);
       }
     } catch (error) {
+      alert("I failed to scan to i am in the catch block");
       throw new Error("scanning error, try again ", error);
     }
   });
