@@ -74,21 +74,16 @@ const handleFormUpload = async () => {
       }
 
       //handling file upload here
-      const res = await fetch(
-        "https://usbeb-backend.onrender.com/api/v1/captureDevice",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const res = await fetch("http://localhost:3000/api/v1/captureDevice", {
+        method: "POST",
+        body: formData,
+      });
 
       if (!res.ok) {
         console.log("form data upload failed");
         alert("Form Data was not uploaded successfully");
         return;
       }
-
-      const response = await res.json();
 
       alert("User information is created successfully");
     });
@@ -131,6 +126,13 @@ const handleFingerprintScanning = async () => {
   });
 };
 
+const clearForm = () => {
+  document.getElementById("clear-form").addEventListener("click", () => {
+    document.getElementById("myForm").reset();
+  });
+};
+
 handleFormUpload();
 //handleFingerprintScanning();
 handleFileSelect();
+clearForm();

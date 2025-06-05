@@ -1,5 +1,11 @@
+body {
+  background-color: #f4f4f4;
+  padding: 1rem;
+}
+
 #main-header {
-  padding: 1.5rem;
+  padding: 1.2rem;
+  border: 2px solid;
   border-radius: 7px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -56,7 +62,7 @@ p {
 
 .form-header {
   background-color: #05c7f2;
-  margin-top: 3rem;
+  margin-top: 2rem;
   padding: 3.5rem 2.5rem 1.5rem 2.5rem;
   border-radius: 8px 8px 0 0;
 }
@@ -153,7 +159,7 @@ p {
 }
 
 #form-sec2 {
-  max-width: 80%;
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -251,8 +257,145 @@ p {
 }
 
 /* Optional: Responsive stacking for mobile */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  body {
+    padding: 0.1rem;
+  }
+  #main-header {
+    padding: 0.8rem 0.4rem;
+    border: 2px solid;
+  }
+
+  .svg-con {
+    padding: 0.3rem;
+    border-radius: 5px;
+    background-color: #05c7f2;
+  }
+
+  .h1Text {
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size: 0.7rem;
+  }
+
+  .svg-con svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  #header-body button {
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+  }
+
+  #main {
+    width: 100%;
+  }
+
+  .form-header {
+    background-color: #05c7f2;
+    margin-top: 1.2rem;
+    padding: 2.5rem 1rem 1rem 1rem;
+    border-radius: 7px 7px 0 0;
+  }
+
+  .form-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .form-header p {
+    font-size: 0.8rem;
+  }
+
+  #form-area {
+    padding: 0.4rem 1rem;
+  }
+
+  #form-area h3,
+  #form-area2 h3,
+  #form-area3 h3 {
+    font-size: 1.4rem;
+  }
+
   #form-sec1 {
     grid-template-columns: 1fr;
+    gap: 1.5rem 1.5rem;
+    padding: 0.7rem 0.5rem 0.5rem 0.5rem;
+  }
+
+  #form-sec1 > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #form-sec1 input,
+  #form-sec1 select {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  #form-area2,
+  #form-area3 {
+    padding: 1rem 1rem 0 1.5rem;
+  }
+
+  #form-sec2 {
+    width: 90%;
+  }
+
+  #form-sec2 button {
+    padding: 1rem 0rem 1rem 0rem;
+    width: 100%;
+    border: 2px dashed;
+    border-radius: 7px;
+  }
+
+  #form-sec2-text {
+    padding: 0 0 0.5rem 1.5rem;
+  }
+
+  .form-area2-p {
+    padding: 0 0 0.5rem 1rem;
+  }
+
+  #form-area4 {
+    padding: 1rem 0.7rem;
+  }
+
+  #form-area4 button {
+    padding: 1rem 0.9rem;
+    border-radius: 5px;
+  }
+
+  #form-area4 span {
+    font-size: 0.7rem;
+  }
+
+  .scanner-con {
+    gap: 0.6rem;
+    padding: 0.7rem 0 0.7rem 0;
+  }
+
+  .fingerprint h4 {
+    font-size: 1rem;
+  }
+
+  .scanner-con svg {
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+
+  .scannow {
+    padding: 0.6rem 1.5rem;
+    border-radius: 5px;
+    font-size: 0.7rem;
+  }
+
+  .fingerprint-image {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
