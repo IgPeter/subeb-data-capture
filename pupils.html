@@ -47,8 +47,8 @@
             </div>
           </div>
           <nav>
-            <a href="./pupils.html">
-               <button>Capture Pupils</button>
+            <a href="./index.html">
+                <button>Capture Staff</button>
             </a>
           </nav>
         </div>
@@ -56,7 +56,7 @@
       <main id="main">
         <div>
           <div class="form-header">
-            <h2>Staff Information Entry</h2>
+            <h2>Student Information Entry</h2>
             <p>Please fill in all required fields accurately</p>
           </div>
           <form action = '/captureDevice' method = 'POST' id="myForm" enctype="multipart/form-data" style="width: 100%;">
@@ -95,7 +95,7 @@
                   />
                 </div>
                 <div>
-                  <label>Staff ID <span>*</span></label
+                  <label>Studend ID <span>*</span></label
                   ><input
                     placeholder="Unique alphanumeric identifier"
                     type="text"
@@ -117,19 +117,19 @@
                   </select>
                 </div>
                 <div>
-                  <label>PPA <span class="text-red-500">*</span> </label
+                  <label>Name Of Parents <span class="text-red-500">*</span> </label
                   ><input
-                    placeholder="Enter PPA"
+                    placeholder="Enter Name Of Parents"
                     type="text"
                     value=""
                     name="ppa"
                   />
                 </div>
                 <div>
-                  <label>Pupils <span>*</span></label
+                  <label>Class <span>*</span></label
                   ><input
                     min="0"
-                    placeholder="Number of pupils"
+                    placeholder="Enter class details"
                     type="number"
                     value=""
                     name="pupils"
