@@ -50,23 +50,23 @@ const handleFormUpload = async () => {
       const file = formInput.passport.files[0];
 
       const fullName = formInput.fullName.value;
-      const staffId = formInput.staffId.value;
+      const classNumber = formInput.classID.value;
       const dateOfBirth = formInput.dateOfBirth.value;
-      const gender = formInput.gender.value;
-      const ppa = formInput.ppa.value;
-      const contact = formInput.contact.value;
+      const age = formInput.age.value;
+      const sex = formInput.sex.value;
       const address = formInput.address.value;
+      const parents = formInput.parents.value;
       const lga = formInput.lga.value;
 
       const formData = new FormData();
 
       formData.append("fullName", fullName);
-      formData.append("staffId", staffId);
+      formData.append("class", classNumber);
       formData.append("dateOfBirth", dateOfBirth);
-      formData.append("gender", gender);
-      formData.append("ppa", ppa);
-      formData.append("contact", contact);
+      formData.append("age", age);
+      formData.append("sex", sex);
       formData.append("address", address);
+      formData.append("parents", parents);
       formData.append("lga", lga);
       formData.append("passport", file);
       //formData.append("fingerprintImage", fingerprintData.BitmapData); // base64 string
@@ -79,7 +79,7 @@ const handleFormUpload = async () => {
 
       //handling file upload here
       const res = await fetch(
-        "https://usbeb-backend.onrender.com/api/v1/captureDevice",
+        "https://usbeb-backend.onrender.com/api/v1/studentData",
         {
           method: "POST",
           body: formData,

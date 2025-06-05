@@ -84,7 +84,7 @@
               <div id="form-sec1">
                 <div>
                   <label
-                    >Full Name
+                    >Name Of Pupils
                     <span>*</span>
                   </label>
                   <input
@@ -95,12 +95,12 @@
                   />
                 </div>
                 <div>
-                  <label>Studend ID <span>*</span></label
+                  <label>Class<span>*</span></label
                   ><input
                     placeholder="Unique alphanumeric identifier"
                     type="text"
                     value=""
-                    name="staffId"
+                    name="classID"
                   />
                 </div>
                 <div>
@@ -108,8 +108,17 @@
                   ><input type="date" value="" name="dateOfBirth" />
                 </div>
                 <div>
-                  <label> Gender <span>*</span> </label>
-                  <select name="gender">
+                  <label>Age<span>*</span></label
+                  ><input
+                    placeholder="Enter Your Age"
+                    type="number"
+                    value=""
+                    name="age"
+                  />
+                </div>
+                <div>
+                  <label> Sex <span>*</span> </label>
+                  <select name="sex">
                     <option value="">Select gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -117,22 +126,30 @@
                   </select>
                 </div>
                 <div>
-                  <label>Name Of Parents <span class="text-red-500">*</span> </label
+                  <label>Address<span class="text-red-500">*</span> </label
                   ><input
-                    placeholder="Enter Name Of Parents"
+                    placeholder="Enter House Address"
                     type="text"
                     value=""
-                    name="ppa"
+                    name="address"
                   />
                 </div>
                 <div>
-                  <label>Class <span>*</span></label
+                  <label>Parents/Guardian<span>*</span></label
                   ><input
-                    min="0"
-                    placeholder="Enter class details"
-                    type="number"
+                    placeholder="Parents or Guardian"
+                    type="text"
                     value=""
-                    name="pupils"
+                    name="parents"
+                  />
+                </div>
+                <div>
+                  <label>LGA Origin<span>*</span></label
+                  ><input
+                    placeholder="LGA Origin"
+                    type="text"
+                    value=""
+                    name="lga"
                   />
                 </div>
               </div>
@@ -294,6 +311,6 @@
         </div>
       </main>
     </div>
-    <script src ="./index.js"></script>
+    <script src ="./pupils.js"></script>
   </body>
 </html>
