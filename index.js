@@ -41,10 +41,10 @@ const handleFormUpload = async () => {
     .addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      if (!window.fingerprintData) {
+      /*if (!fingerprintData) {
         alert("Please scan fingerprint before submit");
         return;
-      }
+      }*/
 
       const formInput = event.target;
       const file = formInput.passport.files[0];
@@ -65,8 +65,8 @@ const handleFormUpload = async () => {
       formData.append("ppa", ppa);
       formData.append("pupils", numberOfPupils);
       formData.append("passport", file);
-      formData.append("fingerprintImage", fingerprintData.BitmapData); // base64 string
-      formData.append("fingerprintTemplate", fingerprintData.TemplateBase64); // base64 string
+      //formData.append("fingerprintImage", fingerprintData.BitmapData); // base64 string
+      //formData.append("fingerprintTemplate", fingerprintData.TemplateBase64); // base64 string
 
       if (!file || !file.type.startsWith("image/")) {
         alert("Upload passport photograph");
@@ -132,5 +132,5 @@ const handleFingerprintScanning = async () => {
 };
 
 handleFormUpload();
-handleFingerprintScanning();
+//handleFingerprintScanning();
 handleFileSelect();
