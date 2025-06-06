@@ -61,7 +61,7 @@ const handleFormUpload = async () => {
       const formData = new FormData();
 
       formData.append("fullName", fullName);
-      formData.append("class", classNumber);
+      formData.append("classID", classNumber);
       formData.append("dateOfBirth", dateOfBirth);
       formData.append("age", age);
       formData.append("sex", sex);
