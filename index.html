@@ -120,12 +120,12 @@
                   </select>
                 </div>
                 <div>
-                  <label>PPA <span class="text-red-500">*</span> </label
+                  <label>Name Of School <span class="text-red-500">*</span> </label
                   ><input
-                    placeholder="Enter PPA"
+                    placeholder="Name Of School"
                     type="text"
                     value=""
-                    name="ppa"
+                    name="nameOfSchool"
                   />
                 </div>
                 <div>
@@ -138,12 +138,25 @@
                   />
                 </div>
                 <div>
-                  <label>Address <span class="text-red-500">*</span> </label
+                  <label>Home Address <span class="text-red-500">*</span> </label
                   ><input
-                    placeholder="Enter Address"
+                    placeholder="Enter Home Address"
                     type="text"
                     value=""
                     name="address"
+                  />
+                </div>
+                <div>
+                  <label>Date Of First Appointment <span>*</span> </label
+                  ><input type="date" value="" name="dateOfFA" />
+                </div>
+                <div>
+                  <label>NIN <span>*</span></label
+                  ><input
+                    placeholder="National Identification Number"
+                    type="number"
+                    value=""
+                    name="nin"
                   />
                 </div>
                 <div>
@@ -240,7 +253,7 @@
                   <path d="M16 13H8"></path>
                   <path d="M16 17H8"></path>
                 </svg>
-                Biometric Data (Optional)
+                Biometric Data <span>*</span>
               </h3>
               <div id="display-fingerprint-image" class="scannow-images-con">
                 <img src ="./images/scannow.png" id = "fingerprint-imageID" class="fingerprint-image"/>

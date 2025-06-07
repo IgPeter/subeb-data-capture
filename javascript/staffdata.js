@@ -29,8 +29,8 @@ const displayStaffData = async () => {
       const staffName = document.createElement("h2");
       staffName.innerHTML = staffData.name;
 
-      const staffPPA = document.createElement("p");
-      staffPPA.textContent = staffData.ppa;
+      const nameOfSchool = document.createElement("p");
+      nameOfSchool.textContent = staffData.nameOfSchool;
 
       const staffGender = document.createElement("p");
       staffGender.innerHTML = staffData.gender;
@@ -40,7 +40,7 @@ const displayStaffData = async () => {
 
       staffCon.appendChild(staffImg);
       staffCon.appendChild(staffName);
-      staffCon.appendChild(staffPPA);
+      staffCon.appendChild(nameOfSchool);
       staffCon.appendChild(staffGender);
       staffCon.appendChild(staffDob);
 

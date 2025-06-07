@@ -53,9 +53,11 @@ const handleFormUpload = async () => {
       const staffId = formInput.staffId.value;
       const dateOfBirth = formInput.dateOfBirth.value;
       const gender = formInput.gender.value;
-      const ppa = formInput.ppa.value;
+      const nameOfSchool = formInput.nameOfSchool.value;
       const contact = formInput.contact.value;
       const address = formInput.address.value;
+      const dateOfFA = formInput.dateOfFA.value;
+      const nin = formInput.nin.value;
       const lga = formInput.lga.value;
 
       const formData = new FormData();
@@ -64,9 +66,11 @@ const handleFormUpload = async () => {
       formData.append("staffId", staffId);
       formData.append("dateOfBirth", dateOfBirth);
       formData.append("gender", gender);
-      formData.append("ppa", ppa);
+      formData.append("nameOfSchool", nameOfSchool);
       formData.append("contact", contact);
       formData.append("address", address);
+      formData.append("dateOfFA", dateOfFA);
+      formData.append("nin", nin);
       formData.append("lga", lga);
       formData.append("passport", file);
       //formData.append("fingerprintImage", fingerprintData.BitmapData); // base64 string
@@ -104,7 +108,7 @@ const handleFingerprintScanning = async () => {
     alert("Please ensure Secu Gen scanner is connected");
 
     try {
-      const response = await fetch("http://localhost:8000/SGIFPCapture", {
+      const response = await fetch("https://localhost:8443/SGIFPCapture", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -140,6 +144,6 @@ const clearForm = () => {
 };
 
 handleFormUpload();
-//handleFingerprintScanning();
+handleFingerprintScanning();
 handleFileSelect();
 clearForm();

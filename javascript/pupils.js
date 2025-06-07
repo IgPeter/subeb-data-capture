@@ -53,10 +53,12 @@ const handleFormUpload = async () => {
       const classNumber = formInput.classID.value;
       const dateOfBirth = formInput.dateOfBirth.value;
       const age = formInput.age.value;
+      const nin = formInput.nin.value;
       const sex = formInput.sex.value;
       const address = formInput.address.value;
       const parents = formInput.parents.value;
       const lga = formInput.lga.value;
+      const resInput = formInput.disabilityInfo.value;
 
       const formData = new FormData();
 
@@ -64,10 +66,12 @@ const handleFormUpload = async () => {
       formData.append("classID", classNumber);
       formData.append("dateOfBirth", dateOfBirth);
       formData.append("age", age);
+      formData.append("nin", nin);
       formData.append("sex", sex);
       formData.append("address", address);
       formData.append("parents", parents);
       formData.append("lga", lga);
+      formData.append("disabilityInfo", resInput);
       formData.append("passport", file);
       //formData.append("fingerprintImage", fingerprintData.BitmapData); // base64 string
       //formData.append("fingerprintTemplate", fingerprintData.TemplateBase64); // base64 string
@@ -104,7 +108,7 @@ const handleFingerprintScanning = async () => {
     alert("Please ensure Secu Gen scanner is connected");
 
     try {
-      const response = await fetch("http://localhost:8000/SGIFPCapture", {
+      const response = await fetch("https://localhost:8443/SGIFPCapture", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -139,7 +143,34 @@ const clearForm = () => {
   });
 };
 
+displayOtherDisabilityField = () => {
+  document.getElementById("disability").addEventListener("change", (event) => {
+    if (event.target.value == "yes") {
+      const disabilitySelect = document.getElementById("disability-select");
+      const responseInput = document.createElement("input");
+      responseInput.name = "disabilityInfo";
+      responseInput.type = "text";
+      responseInput.placeholder = "Give information of the disability";
+      responseInput.value = "";
+      responseInput.style.marginTop = "1rem";
+
+      disabilitySelect.appendChild(responseInput);
+
+      responseInput.addEventListener("change", (event) => {
+        responseInput.value = event.target.value;
+      });
+
+      responseInput.addEventListener("focusout", () => {
+        responseInput.style.display = "none";
+      });
+
+      console.log(responseInput.value);
+    }
+  });
+};
+
+displayOtherDisabilityField();
 handleFormUpload();
-//handleFingerprintScanning();
+handleFingerprintScanning();
 handleFileSelect();
 clearForm();
