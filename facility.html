@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Usbedb Data Collection System - Secure and Accurate Staff Identity Management"
+    />
+    <meta
+      name="keywords"
+      content="Staff Data, Biometric, Identity Collection, Education, React App"
+    />
+    <meta name="author" content="Perttos Digital" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <title>Benue State Subeb | Data Capture &amp; Biometric Collection System</title>
+    <link rel="stylesheet" href="./css/facility.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body style="background-color: #f4f4f4; padding: 1rem">
+    <div id="root">
+      <header id="main-header">
+        <div id="header-body">
+          <div class="hbinner">
+            <div class="svg-con">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                style="color: #f4f4f4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <div class="smart-con">
+              <a>
+                <h1 class="h1Text">Benue State Subeb Data Collection</h1>
+              </a>
+              <p>Data collection tool for subeb schools</p>
+            </div>
+          </div>
+          <nav>
+            <a href="./facilityData.html">
+                <button>Uploaded Facilities</button>
+            </a>
+            <a href="./pupils.html">
+               <button>Capture Pupils</button>
+            </a>
+            <a href="./index.html">
+                <button>Capture Staff</button>
+            </a>
+          </nav>
+        </div>
+      </header>
+        <main id="main">
+        <div>
+          <div class="form-header">
+            <h2>FACILITIES</h2>
+            <p>Please fill in all required fields accurately</p>
+          </div>
+          <form action = '/facility' method = 'POST' id="myForm" enctype="multipart/form-data" style="width: 100%;">
+            <div id="form-area">
+              <h3>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  style = "color: #05c7f2;"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true",
+                  color: #05c7f2;
+                >
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                Classroom Entry
+              </h3>
+              <div id="form-sec1">
+                <div>
+                  <label
+                    >Number Of Classrooms
+                    <span>*</span>
+                  </label>
+                  <input
+                    placeholder="Enter number of classrooms"
+                    type="number"
+                    value=""
+                    name="numOfClassrooms"
+                  />
+                </div>
+                <div>
+                  <label>Is Classroom Okay ? <span>*</span></label
+                  ><select value="" name="classroomOkay">
+                    <option value="Yes">YES</option>
+                    <option value="No">NO</option>
+                </select>
+                </div>
+                <div>
+                  <label>Ventilated And Conducive Fid Learning ? <span>*</span> </label
+                  ><select value="" name="venCon">
+                        <option value="Yes">YES</option>
+                        <option value="No">NO</option>
+                  </select>
+                </div>
+                <div>
+                  <label> Tables <span>*</span> </label>
+                  <input type="number" name="numTables" placeholder="Enter number of tables" value=""/>
+                </div>
+                <div>
+                  <label> Chairs <span>*</span> </label>
+                  <input type="number" name="numChairs" placeholder="Enter number of tables" value=""/>
+                </div>
+                <div>
+                  <label>Is Furniture Okay ? <span>*</span></label
+                  ><select value="" name="furnitureOkay">
+                    <option value="Yes">YES</option>
+                    <option value="No">NO</option>
+                </select>
+                </div>
+                <div>
+                  <label>Is Toilet Facility Okay ? <span>*</span></label
+                  ><select value="" name="toiletOkay">
+                    <option value="Yes">YES</option>
+                    <option value="No">NO</option>
+                </select>
+                </div>
+                <div>
+                  <label>Comment <span>*</span></label
+                  ><textarea
+                    placeholder="Drop a comment."
+                    type="text"
+                    value=""
+                    name="comment"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div id="form-area">
+              <h3>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  style = "color: #05c7f2;"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true",
+                  color: #05c7f2;
+                >
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                Assets Information
+              </h3>
+              <div id="form-sec1">
+                <div>
+                  <label
+                    >Functional Library ?
+                    <span>*</span>
+                  </label>
+                  <select value="" name="functionalLib">
+                    <option value="Yes">YES</option>
+                    <option value="No">NO</option>
+                </select>
+                </div>
+                <div>
+                  <label>Waste Disposal System ? <span>*</span></label
+                  ><select value="" name="wasteDisposal">
+                    <option value="Yes">YES</option>
+                    <option value="No">NO</option>
+                </select>
+                </div>
+                <div>
+                  <label>Safe Drinking Water: Bore Holes ?<span>*</span> </label
+                  ><select value="" name="boreHoles">
+                        <option value="Yes">YES</option>
+                        <option value="No">NO</option>
+                  </select>
+                </div>
+                 <div>
+                  <label>Backup/Solar Power ?<span>*</span> </label
+                  ><select value="" name="backupPower">
+                        <option value="Yes">YES</option>
+                        <option value="No">NO</option>
+                  </select>
+                </div>
+                 <div>
+                  <label>Fencing (Perimeter) ? <span>*</span> </label
+                  ><select value="" name="fencing">
+                        <option value="Yes">YES</option>
+                        <option value="No">NO</option>
+                  </select>
+                </div>
+                 <div>
+                  <label>Teaching Aid ? <span>*</span> </label
+                  ><select value="" name="teachingAid">
+                        <option value="Yes">YES</option>
+                        <option value="No">NO</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Learning Materials ? <span>*</span></label
+                  ><select type="radio" value="" name="learningMat">
+                    <option value="Yes">YES</option>
+                    <option value="No">NO</option>
+                </select>
+                </div>  
+              </div>
+            </div>
+            <div id="form-area4">
+              <button id = "clear-form" type="button">
+                <span>Clear Form</span>
+              </button>
+              <button type="submit" id="submit">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  style="color:#f4f4f4;"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"
+                  />
+                  <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" />
+                  <path d="M7 3v4a1 1 0 0 0 1 1h7"></path>
+                </svg>
+                <span>Submit Record</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+    <script src ="./javascript/pupils.js"></script>
+  </body>
+</html>

@@ -1,5 +1,70 @@
 let fingerprintData = null;
 
+const OPENCAGE_API_KEY = "62ebbe3af66b45c9bebbb33f77a316c9";
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(handleLocation, showError);
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
+function handleLocation(position) {
+  const { latitude, longitude } = position.coords;
+
+  // Call OpenCage Reverse Geocoding API
+  fetch(
+    `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${OPENCAGE_API_KEY}`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      if (data && data.results && data.results.length > 0) {
+        const components = data.results[0].components;
+        const area =
+          components.suburb ||
+          components.neighbourhood ||
+          components.town ||
+          components.estate ||
+          components.residential ||
+          "";
+        const lga = components.county || components.municipality || "";
+        const city = components.city || components.county || "";
+        const road = components.road || "";
+        const country = components.country || "";
+
+        const output = `
+          Area: ${area}<br>
+          LGA (County): ${lga} City: ${city}<br>
+          Street: ${road}<br>
+          Country: ${country}
+        `;
+
+        const mainDiv = document.getElementById("main");
+        const pText = document.createElement("p");
+        pText.className = "locationText";
+        pText.innerHTML = output;
+        mainDiv.appendChild(pText);
+
+        // Send to server
+        window.userLocationData = {
+          latitude,
+          longitude,
+          area,
+          lga,
+          city,
+          road,
+          country,
+        };
+      }
+    })
+    .catch((err) => console.error("Geocoding error:", err));
+}
+
+function showError(error) {
+  console.error("Geolocation error:", error.message);
+}
+
 const handleFileSelect = async () => {
   document.getElementById("uploadBtn").addEventListener("click", () => {
     document.querySelector(".hidden").click();
@@ -46,6 +111,7 @@ const handleFormUpload = async () => {
         return;
       }*/
 
+      const locationInfo = { ...window.userLocationData };
       const formInput = event.target;
       const file = formInput.passport.files[0];
 
@@ -57,6 +123,7 @@ const handleFormUpload = async () => {
       const contact = formInput.contact.value;
       const address = formInput.address.value;
       const dateOfFA = formInput.dateOfFA.value;
+      const dateOfLP = formInput.dateOfLP.value;
       const nin = formInput.nin.value;
       const lga = formInput.lga.value;
 
@@ -70,8 +137,10 @@ const handleFormUpload = async () => {
       formData.append("contact", contact);
       formData.append("address", address);
       formData.append("dateOfFA", dateOfFA);
+      formData.append("dataOfLP", dateOfLP);
       formData.append("nin", nin);
       formData.append("lga", lga);
+      formData.append("location", JSON.stringify(locationInfo));
       formData.append("passport", file);
       //formData.append("fingerprintImage", fingerprintData.BitmapData); // base64 string
       //formData.append("fingerprintTemplate", fingerprintData.TemplateBase64); // base64 string
@@ -87,6 +156,10 @@ const handleFormUpload = async () => {
         {
           method: "POST",
           body: formData,
+          /*headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },*/
         }
       );
 
@@ -147,3 +220,5 @@ handleFormUpload();
 handleFingerprintScanning();
 handleFileSelect();
 clearForm();
+
+window.onload = getLocation();
