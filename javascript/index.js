@@ -256,6 +256,8 @@ function CallSGIFPGetData(success, fail) {
 }
 
 const success = (result) => {
+  console.log(result);
+
   if (result.ErrorCode == 0) {
     if (result != null && result.BMPBase64.length > 0) {
       fingerprintData = result;
