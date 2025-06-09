@@ -13,9 +13,93 @@
     />
     <meta name="author" content="Perttos Digital" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <title>Benue State Subeb | Data Capture &amp; Biometric Collection System</title>
+    <title>
+      Benue State Subeb | Data Capture &amp; Biometric Collection System
+    </title>
     <link rel="stylesheet" href="./css/facility.css" />
     <link rel="stylesheet" href="./css/index.css" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+
+      #container {
+        padding: 3rem 10rem;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 15px;
+      }
+
+      .section-toggle {
+        background-color: #e0e0e0;
+        padding: 12px 16px;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .sub-section {
+        display: none;
+        margin-top: 15px;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 6px;
+        background-color: white;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 15px;
+      }
+
+      .field {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .comment {
+        flex: 1;
+        min-width: 250px;
+      }
+
+      @media (max-width: 768px) {
+        .row {
+          flex-direction: column;
+        }
+      }
+    </style>
   </head>
   <body style="background-color: #f4f4f4; padding: 1rem">
     <div id="root">
@@ -49,212 +133,479 @@
           </div>
           <nav>
             <a href="./facilityData.html">
-                <button>Uploaded Facilities</button>
+              <button>Uploaded Facilities</button>
             </a>
             <a href="./pupils.html">
-               <button>Capture Pupils</button>
+              <button>Capture Pupils</button>
             </a>
             <a href="./index.html">
-                <button>Capture Staff</button>
+              <button>Capture Staff</button>
             </a>
           </nav>
         </div>
       </header>
-        <main id="main">
-        <div>
-          <div class="form-header">
-            <h2>FACILITIES</h2>
-            <p>Please fill in all required fields accurately</p>
+      <div id="container">
+        <form>
+          <!-- Block of Classrooms -->
+          <div class="form-group">
+            <label for="blocks">Blocks of Classrooms</label>
+            <input
+              type="number"
+              id="blocks"
+              name="blocksOfClassroom"
+              placeholder="Enter number of blocks"
+            />
           </div>
-          <form action = '/facility' method = 'POST' id="myForm" enctype="multipart/form-data" style="width: 100%;">
-            <div id="form-area">
-              <h3>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  style = "color: #05c7f2;"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true",
-                  color: #05c7f2;
-                >
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-                Classroom Entry
-              </h3>
-              <div id="form-sec1">
-                <div>
-                  <label
-                    >Number Of Classrooms
-                    <span>*</span>
-                  </label>
-                  <input
-                    placeholder="Enter number of classrooms"
-                    type="number"
-                    value=""
-                    name="numOfClassrooms"
-                  />
-                </div>
-                <div>
-                  <label>Is Classroom Okay ? <span>*</span></label
-                  ><select value="" name="classroomOkay">
-                    <option value="Yes">YES</option>
-                    <option value="No">NO</option>
-                </select>
-                </div>
-                <div>
-                  <label>Ventilated And Conducive Fid Learning ? <span>*</span> </label
-                  ><select value="" name="venCon">
-                        <option value="Yes">YES</option>
-                        <option value="No">NO</option>
-                  </select>
-                </div>
-                <div>
-                  <label> Tables <span>*</span> </label>
-                  <input type="number" name="numTables" placeholder="Enter number of tables" value=""/>
-                </div>
-                <div>
-                  <label> Chairs <span>*</span> </label>
-                  <input type="number" name="numChairs" placeholder="Enter number of tables" value=""/>
-                </div>
-                <div>
-                  <label>Is Furniture Okay ? <span>*</span></label
-                  ><select value="" name="furnitureOkay">
-                    <option value="Yes">YES</option>
-                    <option value="No">NO</option>
-                </select>
-                </div>
-                <div>
-                  <label>Is Toilet Facility Okay ? <span>*</span></label
-                  ><select value="" name="toiletOkay">
-                    <option value="Yes">YES</option>
-                    <option value="No">NO</option>
-                </select>
-                </div>
-                <div>
-                  <label>Comment <span>*</span></label
-                  ><textarea
-                    placeholder="Drop a comment."
-                    type="text"
-                    value=""
-                    name="comment"
-                  ></textarea>
-                </div>
+
+          <!-- Classrooms toggle -->
+          <div class="section-toggle" onclick="toggleFields(event)">
+            Classrooms
+          </div>
+
+          <!-- Classroom subfields -->
+          <div class="sub-section" id="classroomSubfields">
+            <!-- Pupils -->
+            <div class="row">
+              <div class="field">
+                <label for="pupils">Pupils Classrooms</label>
+                <input type="number" id="pupils" name="numPupilsClassroom" />
+              </div>
+              <div class="comment">
+                <label for="pupilsComment">Comment</label>
+                <textarea
+                  id="pupilsComment"
+                  name="numPupilsComment"
+                  rows="2"
+                ></textarea>
               </div>
             </div>
-            <div id="form-area">
-              <h3>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  style = "color: #05c7f2;"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true",
-                  color: #05c7f2;
-                >
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-                Assets Information
-              </h3>
-              <div id="form-sec1">
-                <div>
-                  <label
-                    >Functional Library ?
-                    <span>*</span>
-                  </label>
-                  <select value="" name="functionalLib">
-                    <option value="Yes">YES</option>
-                    <option value="No">NO</option>
-                </select>
-                </div>
-                <div>
-                  <label>Waste Disposal System ? <span>*</span></label
-                  ><select value="" name="wasteDisposal">
-                    <option value="Yes">YES</option>
-                    <option value="No">NO</option>
-                </select>
-                </div>
-                <div>
-                  <label>Safe Drinking Water: Bore Holes ?<span>*</span> </label
-                  ><select value="" name="boreHoles">
-                        <option value="Yes">YES</option>
-                        <option value="No">NO</option>
-                  </select>
-                </div>
-                 <div>
-                  <label>Backup/Solar Power ?<span>*</span> </label
-                  ><select value="" name="backupPower">
-                        <option value="Yes">YES</option>
-                        <option value="No">NO</option>
-                  </select>
-                </div>
-                 <div>
-                  <label>Fencing (Perimeter) ? <span>*</span> </label
-                  ><select value="" name="fencing">
-                        <option value="Yes">YES</option>
-                        <option value="No">NO</option>
-                  </select>
-                </div>
-                 <div>
-                  <label>Teaching Aid ? <span>*</span> </label
-                  ><select value="" name="teachingAid">
-                        <option value="Yes">YES</option>
-                        <option value="No">NO</option>
-                  </select>
-                </div>
-                <div>
-                  <label>Learning Materials ? <span>*</span></label
-                  ><select type="radio" value="" name="learningMat">
-                    <option value="Yes">YES</option>
-                    <option value="No">NO</option>
-                </select>
-                </div>  
+
+            <!-- Students -->
+            <div class="row">
+              <div class="field">
+                <label for="students">Students Classrooms</label>
+                <input
+                  type="number"
+                  id="students"
+                  name="numStudentsClassroom"
+                />
+              </div>
+              <div class="comment">
+                <label for="studentsComment">Comment</label>
+                <textarea
+                  id="studentsComment"
+                  name="numStudentsComment"
+                  rows="2"
+                ></textarea>
               </div>
             </div>
-            <div id="form-area4">
-              <button id = "clear-form" type="button">
-                <span>Clear Form</span>
-              </button>
-              <button type="submit" id="submit">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  style="color:#f4f4f4;"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"
-                  />
-                  <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" />
-                  <path d="M7 3v4a1 1 0 0 0 1 1h7"></path>
-                </svg>
-                <span>Submit Record</span>
-              </button>
+
+            <!-- ECCDE -->
+            <div class="row">
+              <div class="field">
+                <label for="eccde">ECCDE Classrooms</label>
+                <input type="number" id="eccde" name="numEccdeClassroom" />
+              </div>
+              <div class="comment">
+                <label for="eccdeComment">Comment</label>
+                <textarea
+                  id="eccdeComment"
+                  name="numEccdeComment"
+                  rows="2"
+                ></textarea>
+              </div>
             </div>
-          </form>
-        </div>
-      </main>
+          </div>
+
+          <!--Next section ventilation and conducive-->
+          <div class="section-toggle" onclick="toggleFields(event)">
+            Ventilated And Conducive For Learning
+          </div>
+
+          <!-- Ventilated subfields -->
+          <div class="sub-section" id="ventilatedSubfields">
+            <!-- Pupils -->
+            <div class="row">
+              <div class="field">
+                <label for="pupils">Pupils</label>
+                <select type="number" id="pupils" name="pupils-ventilated">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="pupilsComment">Comment</label>
+                <textarea
+                  id="pupilsComment"
+                  name="venPupilsComment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Students -->
+            <div class="row">
+              <div class="field">
+                <label for="students">Students</label>
+                <select type="number" id="students" name="students-ventilated">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="studentsComment">Comment</label>
+                <textarea
+                  id="studentsComment"
+                  name="venStudentsComment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- ECCDE -->
+            <div class="row">
+              <div class="field">
+                <label for="eccde">ECCDE</label>
+                <select type="number" id="eccde" name="eccde-ventilated">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="eccdeComment">Comment</label>
+                <textarea
+                  id="eccdeComment"
+                  name="venEccdeComment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <!--End of ventilated section-->
+
+          <!-- Furniture toggle -->
+          <div class="section-toggle" onclick="toggleFields(event)">
+            Number Of Furnitures
+          </div>
+
+          <!-- Furniture subfields -->
+          <div class="sub-section" id="furnitureSubfields">
+            <!-- Pupils -->
+            <div class="row">
+              <div class="field">
+                <label for="pupils">Pupils number</label>
+                <input type="number" id="pupils" name="pupils-furniture" />
+              </div>
+              <div class="comment">
+                <label for="pupilsComment">Comment</label>
+                <textarea
+                  id="pupilsComment"
+                  name="furniture-pupils-comment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Students -->
+            <div class="row">
+              <div class="field">
+                <label for="students">Students Number</label>
+                <input type="number" id="students" name="students-furniture" />
+              </div>
+              <div class="comment">
+                <label for="studentsComment">Comment</label>
+                <textarea
+                  id="studentsComment"
+                  name="furniture-students-comment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- ECCDE -->
+            <div class="row">
+              <div class="field">
+                <label for="eccde">ECCDE Number</label>
+                <input type="number" id="eccde" name="eccde-furniture" />
+              </div>
+              <div class="comment">
+                <label for="eccdeComment">Comment</label>
+                <textarea
+                  id="eccdeComment"
+                  name="eccde-furniture-comment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!--Teachers-->
+            <div class="row">
+              <div class="field">
+                <label for="eccde">Teachers Number</label>
+                <input type="number" id="eccde" name="teachers-furniture" />
+              </div>
+              <div class="comment">
+                <label for="eccdeComment">Comment</label>
+                <textarea
+                  id="eccdeComment"
+                  name="teachers-furniture-comment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!--fourth section for Toilet Facility-->
+          <div class="section-toggle" onclick="toggleFields(event)">
+            Is Toilet Okay ?
+          </div>
+
+          <!-- Toilet facility subfields -->
+          <div class="sub-section" id="toiletSubfields">
+            <!-- Pupils -->
+            <div class="row">
+              <div class="field">
+                <label for="pupils">Pupils</label>
+                <select type="number" id="pupils" name="pupils-toilet-okay">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="pupilsComment">Comment</label>
+                <textarea
+                  id="pupilsComment"
+                  name="pupils-toilet-comment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Students -->
+            <div class="row">
+              <div class="field">
+                <label for="students">Students</label>
+                <select type="number" id="students" name="students-toilet-okay">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="studentsComment">Comment</label>
+                <textarea
+                  id="studentsComment"
+                  name="students-toilet-comment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- ECCDE -->
+            <div class="row">
+              <div class="field">
+                <label for="eccde">ECCDE</label>
+                <select type="number" id="eccde" name="eccde-toilet-okay">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="eccdeComment">Comment</label>
+                <textarea
+                  id="eccdeComment"
+                  name="eccde-toilet-comment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <!--End of Toilet Facility section-->
+
+          <!--section 5 fencing-->
+          <div class="row" style="padding: 3rem 0">
+            <div class="field">
+              <label for="blocks">Fencing ?</label>
+              <select id="blocks" name="fencing">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="comment">
+              <label for="fencing-omment">Comment</label>
+              <textarea
+                id="eccdeComment"
+                name="fencing-comment"
+                rows="2"
+              ></textarea>
+            </div>
+          </div>
+          <!--End of fencing section here-->
+
+          <!--Section 6 Teaching aid/learning materials-->
+          <div class="section-toggle" onclick="toggleFields(event)">
+            Teaching Aid/Learning Materials
+          </div>
+
+          <!-- Teaching aid and learning materials subfields -->
+          <div class="sub-section" id="tlaSubfields">
+            <!-- Blackboard -->
+            <div class="row">
+              <div class="field">
+                <label for="pupils">Blackboard</label>
+                <select type="number" id="pupils" name="blackboard">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="pupilsComment">Comment</label>
+                <textarea
+                  id="pupilsComment"
+                  name="blackboard-comment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Text Book -->
+            <div class="row">
+              <div class="field">
+                <label for="students">Textbook</label>
+                <select type="number" id="students" name="textbook">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="studentsComment">Comment</label>
+                <textarea
+                  id="studentsComment"
+                  name="textbook-comment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- White Board -->
+            <div class="row">
+              <div class="field">
+                <label for="eccde">White Board</label>
+                <select type="number" id="eccde" name="whiteboard">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="eccdeComment">Comment</label>
+                <textarea
+                  id="eccdeComment"
+                  name="whiteboard-comment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+            <!--Lesson Notes-->
+            <div class="row">
+              <div class="field">
+                <label for="eccde">White Board</label>
+                <select type="number" id="eccde" name="lessonNotes">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="eccdeComment">Comment</label>
+                <textarea
+                  id="eccdeComment"
+                  name="lessonNotes-comment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <!--End of teaching aid and learning materials-->
+
+          <!--section 7 Agric Farm-->
+          <div class="row" style="padding: 3rem 0">
+            <div class="field">
+              <label for="blocks">Agric Farm ?</label>
+              <select id="blocks" name="agric-farm">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="comment">
+              <label for="Comment">Comment </label>
+              <textarea
+                id="eccdeComment"
+                name="agric-farm-comment"
+                rows="2"
+              ></textarea>
+            </div>
+          </div>
+          <!--End of Agric Farm section here-->
+
+          <!--section 8 Sport Facility-->
+          <div class="row" style="padding: 1rem 0">
+            <div class="field">
+              <label for="blocks">Sport Facility ?</label>
+              <select id="blocks" name="sport-facility">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="comment">
+              <label for="comment">Comment</label>
+              <textarea
+                id="eccdeComment"
+                name="sport-facility-comment"
+                rows="2"
+              ></textarea>
+            </div>
+          </div>
+          <!--End of Agric Farm section here-->
+          <div id="form-area4">
+            <button id="clear-form" type="button">
+              <span>Clear Form</span>
+            </button>
+            <button type="submit" id="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                style="color: #f4f4f4"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"
+                />
+                <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" />
+                <path d="M7 3v4a1 1 0 0 0 1 1h7"></path>
+              </svg>
+              <span>Submit Record</span>
+            </button>
+          </div>
+        </form>
+      </div>
+      <!--End of container div-->
     </div>
-    <script src ="./javascript/pupils.js"></script>
+    <script src="./javascript/facility.js"></script>
+    <script src="./javascript/pupils.js"></script>
   </body>
 </html>
