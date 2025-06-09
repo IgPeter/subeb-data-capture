@@ -59,4 +59,4 @@ const displayStudentData = async () => {
   }
 };
 
-displayStudentData();
+window.onload = displayStudentData();

@@ -51,4 +51,4 @@ const displayStaffData = async () => {
   }
 };
 
-displayStaffData();
+window.onload = displayStaffData();
