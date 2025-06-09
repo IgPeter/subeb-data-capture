@@ -226,6 +226,8 @@ const success = (result) => {
       fingerprintData = result;
       document.getElementById("fingerprint-imageID").src =
         "./images/scanaccepted.jpg";
+    } else {
+      alert("Please capture fingerprint");
     }
   } else {
     alert(
