@@ -117,7 +117,7 @@ const handleFormUpload = async () => {
 
       const fullName = formInput.fullName.value;
       const staffId = formInput.staffId.value;
-      const ppaTeacher = formInput.ppa - teachers.value;
+      const ppaTeacher = formInput.ppaTeachers.value;
       const dateOfBirth = formInput.dateOfBirth.value;
       const gender = formInput.gender.value;
       const nameOfSchool = formInput.nameOfSchool.value;
