@@ -216,8 +216,70 @@ const clearForm = () => {
   });
 };
 
+const xmlSecuGenHandler = () => {
+  document.getElementById("scannowID").addEventListener("click", () => {
+    alert("Please ensure Secu Gen scanner is connected");
+
+    document.getElementById("display-fingerprint-image").style.display =
+      "block";
+
+    CallSGIFPGetData(success, fail);
+  });
+};
+
+function CallSGIFPGetData(success, fail) {
+  // 8.16.2017 - At this time, only SSL client will be supported.
+  var uri = "https://localhost:8443/SGIFPCapture";
+
+  var xmlhttp = new XMLHttpRequest();
+
+  xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      const fpobject = JSON.parse(xmlhttp.responseText);
+      success(fpobject);
+    } else if (xmlhttp.status == 404) {
+      fail(xmlhttp.status);
+    }
+  };
+  var params = "Timeout=" + "10000";
+  params += "&Quality=" + "50";
+  params += "";
+  params += "&templateFormat=" + "ISO";
+  params += "&imageWSQRate=" + "0.75";
+
+  xmlhttp.open("POST", uri, true);
+  xmlhttp.send(params);
+
+  xmlhttp.onerror = function () {
+    fail(xmlhttp.statusText);
+  };
+}
+
+const success = (result) => {
+  if (result.ErrorCode == 0) {
+    if (result != null && result.BMPBase64.length > 0) {
+      fingerprintData = result;
+      document.getElementById("fingerprint-imageID").src =
+        "./images/scanaccepted.jpg";
+    }
+  } else {
+    alert(
+      "Fingerprint Capture Error Code:  " +
+        result.ErrorCode +
+        ".\nDescription:  " +
+        ErrorCodeToString(result.ErrorCode) +
+        "."
+    );
+  }
+};
+
+const fail = (status) => {
+  alert("Check if SGIBIOSRV is running; Status = " + status + ":");
+};
+
 handleFormUpload();
-handleFingerprintScanning();
+//handleFingerprintScanning();
+xmlSecuGenHandler();
 handleFileSelect();
 clearForm();
 
