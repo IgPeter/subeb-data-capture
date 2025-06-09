@@ -38,6 +38,8 @@ const handleFacilityFormData = () => {
     const toiletStudentsComment = input.students - toilet - comment.value;
     const toiletEccde = input.eccde - toilet - okay.value;
     const toiletEccdeComment = input.eccde - toilet - comment.value;
+    const toiletTeachers = input.toilet - teachers.value;
+    const toiletTeachersComment = input.toilet - teachers - comment.value;
 
     //collecting fencing data
     const fencing = input.fencing.value;
@@ -89,6 +91,8 @@ const handleFacilityFormData = () => {
       toiletStudentsComment: toiletStudentsComment,
       toiletEccde: toiletEccde,
       toiletEccdeComment: toiletEccdeComment,
+      toiletTeachers: toiletTeachers,
+      toiletTeachersComment: toiletTeachersComment,
       fencing: fencing,
       fencingComment: fencingComment,
       blackboard: blackboard,

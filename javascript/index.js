@@ -142,8 +142,8 @@ const handleFormUpload = async () => {
       formData.append("lga", lga);
       formData.append("location", JSON.stringify(locationInfo));
       formData.append("passport", file);
-      //formData.append("fingerprintImage", fingerprintData.BitmapData); // base64 string
-      //formData.append("fingerprintTemplate", fingerprintData.TemplateBase64); // base64 string
+      formData.append("fingerprintImage", fingerprintData.BMPBase64); // base64 string
+      formData.append("fingerprintTemplate", fingerprintData.TemplateBase64); // base64 string
 
       if (!file || !file.type.startsWith("image/")) {
         alert("Upload passport photograph");
@@ -171,43 +171,6 @@ const handleFormUpload = async () => {
 
       alert("User information is created successfully");
     });
-};
-
-const handleFingerprintScanning = async () => {
-  document.getElementById("scannowID").addEventListener("click", async () => {
-    document.getElementById("display-fingerprint-image").style.display =
-      "block";
-
-    alert("Please ensure Secu Gen scanner is connected");
-
-    try {
-      const response = await fetch("https://localhost:8443/SGIFPCapture", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Quality: 60,
-          Timeout: 10000,
-          ImageWSQRate: 0.75,
-          TemplateFormat: "ISO",
-        }),
-      });
-
-      const result = await response.json();
-
-      if (result.ErrorCode == 0) {
-        fingerprintData = result;
-        document.getElementById("fingerprint-imageID").src =
-          "./images/scanaccepted.jpg";
-      } else {
-        alert(`${result.errorDescription}`);
-      }
-    } catch (error) {
-      alert("I failed to scan to i am in the catch block");
-      throw new Error("scanning error, try again ", error);
-    }
-  });
 };
 
 const clearForm = () => {
@@ -256,8 +219,6 @@ function CallSGIFPGetData(success, fail) {
 }
 
 const success = (result) => {
-  console.log(result);
-
   if (result.ErrorCode == 0) {
     if (result != null && result.BMPBase64.length > 0) {
       fingerprintData = result;

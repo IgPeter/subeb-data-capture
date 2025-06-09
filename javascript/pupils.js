@@ -58,6 +58,7 @@ const handleFormUpload = async () => {
       const address = formInput.address.value;
       const parents = formInput.parents.value;
       const lga = formInput.lga.value;
+      const disability = formInput.disability.value;
       const resInput = formInput.disabilityInfo.value;
 
       const formData = new FormData();
@@ -71,10 +72,11 @@ const handleFormUpload = async () => {
       formData.append("address", address);
       formData.append("parents", parents);
       formData.append("lga", lga);
+      formData.append("disability", disability);
       formData.append("disabilityInfo", resInput);
       formData.append("passport", file);
-      //formData.append("fingerprintImage", fingerprintData.BitmapData); // base64 string
-      //formData.append("fingerprintTemplate", fingerprintData.TemplateBase64); // base64 string
+      formData.append("fingerprintImage", fingerprintData.BitmapData); // base64 string
+      formData.append("fingerprintTemplate", fingerprintData.TemplateBase64); // base64 string
 
       if (!file || !file.type.startsWith("image/")) {
         alert("Upload passport photograph");
@@ -100,43 +102,6 @@ const handleFormUpload = async () => {
     });
 };
 
-const handleFingerprintScanning = async () => {
-  document.getElementById("scannowID").addEventListener("click", async () => {
-    document.getElementById("display-fingerprint-image").style.display =
-      "block";
-
-    alert("Please ensure Secu Gen scanner is connected");
-
-    try {
-      const response = await fetch("https://localhost:8443/SGIFPCapture", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Quality: 60,
-          Timeout: 10000,
-          ImageWSQRate: 0.75,
-          TemplateFormat: "ISO",
-        }),
-      });
-
-      const result = await response.json();
-
-      if (result.ErrorCode == 0) {
-        fingerprintData = result;
-        document.getElementById("fingerprint-imageID").src =
-          "./images/scanaccepted.jpg";
-      } else {
-        alert(`${result.errorDescription}`);
-      }
-    } catch (error) {
-      alert("I failed to scan to i am in the catch block");
-      throw new Error("scanning error, try again ", error);
-    }
-  });
-};
-
 const clearForm = () => {
   document.getElementById("clear-form").addEventListener("click", () => {
     document.getElementById("myForm").reset();
@@ -148,7 +113,7 @@ displayOtherDisabilityField = () => {
     if (event.target.value == "yes") {
       const disabilitySelect = document.getElementById("disability-select");
       const responseInput = document.createElement("input");
-      responseInput.name = "disabilityInfo";
+      responseInput.name = "disabilityInfo" || "";
       responseInput.type = "text";
       responseInput.placeholder = "Give information of the disability";
       responseInput.value = "";
@@ -169,8 +134,70 @@ displayOtherDisabilityField = () => {
   });
 };
 
+const xmlSecuGenHandler = () => {
+  document.getElementById("scannowID").addEventListener("click", () => {
+    alert("Please ensure Secu Gen scanner is connected");
+
+    document.getElementById("display-fingerprint-image").style.display =
+      "block";
+
+    CallSGIFPGetData(success, fail);
+  });
+};
+
+function CallSGIFPGetData(success, fail) {
+  // 8.16.2017 - At this time, only SSL client will be supported.
+  var uri = "https://localhost:8443/SGIFPCapture";
+
+  var xmlhttp = new XMLHttpRequest();
+
+  xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      const fpobject = JSON.parse(xmlhttp.responseText);
+      success(fpobject);
+    } else if (xmlhttp.status == 404) {
+      fail(xmlhttp.status);
+    }
+  };
+  var params = "Timeout=" + "10000";
+  params += "&Quality=" + "50";
+  params += "";
+  params += "&templateFormat=" + "ISO";
+  params += "&imageWSQRate=" + "0.75";
+
+  xmlhttp.open("POST", uri, true);
+  xmlhttp.send(params);
+
+  xmlhttp.onerror = function () {
+    fail(xmlhttp.statusText);
+  };
+}
+
+const success = (result) => {
+  if (result.ErrorCode == 0) {
+    if (result != null && result.BMPBase64.length > 0) {
+      fingerprintData = result;
+      document.getElementById("fingerprint-imageID").src =
+        "./images/scanaccepted.jpg";
+    }
+  } else {
+    alert(
+      "Fingerprint Capture Error Code:  " +
+        result.ErrorCode +
+        ".\nDescription:  " +
+        ErrorCodeToString(result.ErrorCode) +
+        "."
+    );
+  }
+};
+
+const fail = (status) => {
+  alert("Check if SGIBIOSRV is running; Status = " + status + ":");
+};
+
 displayOtherDisabilityField();
 handleFormUpload();
-handleFingerprintScanning();
+xmlSecuGenHandler();
+//handleFingerprintScanning();
 handleFileSelect();
 clearForm();
