@@ -117,6 +117,7 @@ const handleFormUpload = async () => {
 
       const fullName = formInput.fullName.value;
       const staffId = formInput.staffId.value;
+      const ppaTeacher = formInput.ppa - teachers.value;
       const dateOfBirth = formInput.dateOfBirth.value;
       const gender = formInput.gender.value;
       const nameOfSchool = formInput.nameOfSchool.value;
@@ -131,6 +132,7 @@ const handleFormUpload = async () => {
 
       formData.append("fullName", fullName);
       formData.append("staffId", staffId);
+      formData.append("ppa-teacher", ppaTeacher);
       formData.append("dateOfBirth", dateOfBirth);
       formData.append("gender", gender);
       formData.append("nameOfSchool", nameOfSchool);
