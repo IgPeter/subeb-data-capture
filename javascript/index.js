@@ -171,14 +171,9 @@ const handleFormUpload = async () => {
         return;
       }
 
+      document.getElementById("myForm").reset();
       alert("User information is created successfully");
     });
-};
-
-const clearForm = () => {
-  document.getElementById("clear-form").addEventListener("click", () => {
-    document.getElementById("myForm").reset();
-  });
 };
 
 const xmlSecuGenHandler = () => {
@@ -248,6 +243,6 @@ handleFormUpload();
 //handleFingerprintScanning();
 xmlSecuGenHandler();
 handleFileSelect();
-clearForm();
+//clearForm();
 
 window.onload = getLocation();
