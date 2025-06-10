@@ -251,7 +251,7 @@ const fail = (status) => {
 };
 
 handleFormUpload();
-//xmlSecuGenHandler();
+xmlSecuGenHandler();
 handleFileSelect();
 
 window.onload = getLocation();
