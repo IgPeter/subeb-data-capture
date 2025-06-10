@@ -116,15 +116,14 @@ function clearForm() {
 displayOtherDisabilityField = () => {
   document.getElementById("disability").addEventListener("change", (event) => {
     const disabilityCon = document.getElementById("disabilityCon");
-    const disabilityInfo =document.getElementById("disabilityInfo");
+    const disabilityInfo = document.getElementById("disabilityInfo");
 
-    if(event.target.value == "yes") {
-      disabilityCon.style.display = "block";  
-    }else {
+    if (event.target.value == "yes") {
+      disabilityCon.style.display = "block";
+    } else {
       disabilityCon.style.display = "none";
-      disabilityInfo.value = '';
+      disabilityInfo.value = "";
     }
-    
   });
 };
 
