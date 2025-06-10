@@ -1,7 +1,7 @@
 const displayStaffData = async () => {
   try {
     const res = await fetch(
-      "https://usbeb-backend.onrender.com/api/v1/captureDevice",
+      "https://usbeb-backend.onrender.com/api/v1/staffData",
       {
         method: "GET",
       }

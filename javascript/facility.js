@@ -4,95 +4,91 @@ const handleFacilityFormData = () => {
 
     const input = event.target;
 
+    //first section
     const blocksOfClassrooms = input.blocksOfClassroom.value;
-    const pupilsNumOfClassroom = input.numPupilsClassroom.value;
-    const numPupilsComment = input.numPupilsComment.value;
-    const numStudentsClassroom = input.numStudentsClassroom.value;
-    const numStudentsComment = input.numStudentsComment.value;
+    const nameOfSchool = input.nameOfSchool.value;
+
+    //number of classroom section
     const numEccdeClassroom = input.numEccdeClassroom.value;
     const numEccdeComment = input.numEccdeComment.value;
+    const numPrimaryClassroom = input.numPrimaryClassroom.value;
+    const numPrimaryClassroomComment = input.numPrimaryComment.value;
+    const numUbeJssClassroom = input.numUbeJssClassroom.value;
+    const numUbeJssClassroomComment = input.numUbeJssComment.value;
 
     //collecting ventilated data
-    const venPupils = input.pupils - ventilated.value;
-    const venPupilsComment = input.venPupilsComment.value;
-    const venStudents = input.students - ventilated.value;
-    const venStudentsComment = input.venStudentsComment.value;
-    const venEccde = input.eccde - ventilated.value;
+    const venEccde = input.venEccde.value;
     const venEccdeComment = input.venEccdeComment.value;
+    const venPrimary = input.venPrimary.value;
+    const venPrimaryComment = input.venPrimaryComment.value;
+    const venUbeJss = input.venUbeJss.value;
+    const venUbeJssComment = input.venUbeJssComment.value;
 
     //collecting furniture data
-    const numFurniturePupils = input.pupils - furniture.value;
-    const numFurniturePupilsComment = input.furniture - pupils - comment.value;
-    const numFurnitureStudents = input.students - furniture.value;
-    const numFurnitureStudentsComment =
-      input.furniture - students - comment.value;
-    const numFurnitureEccde = input.eccde - furniture.value;
-    const numFurnitureEccdeComment = input.eccde - furniture - comment.value;
-    const teacherFurniture = input.teachers - furniture.value;
-    const teacherFurnitureComment = input.teachers - furniture - comment.value;
+    const eccdeFurniture = input.eccdeFurniture.value;
+    const eccdeFurnitureComment = input.eccdeFurnitureComment.value;
+    const primaryFurniture = input.primaryFurniture.value;
+    const primaryFurnitureComment = input.primaryFurnitureComment.value;
+    const ubeJssFurniture = input.ubeJssFurniture.value;
+    const ubeJssFurnitureComment = input.ubeJssFurnitureComment.value;
+    const teachersFurniture = input.teachersFurniture.value;
+    const teachersFurnitureComment = input.teachersFurnitureComment.value;
 
     //collecting toilet okay data
-    const toiletPupils = input.pupils - toilet - okay.value;
-    const toiletPupilsComment = input.pupils - toilet - comment.value;
-    const toiletStudents = input.students - toilet - okay.value;
-    const toiletStudentsComment = input.students - toilet - comment.value;
-    const toiletEccde = input.eccde - toilet - okay.value;
-    const toiletEccdeComment = input.eccde - toilet - comment.value;
-    const toiletTeachers = input.toilet - teachers.value;
-    const toiletTeachersComment = input.toilet - teachers - comment.value;
+    const toilet = input.toilet.value;
+    const toiletComment = input.toiletComment.value;
 
     //collecting fencing data
     const fencing = input.fencing.value;
-    const fencingComment = input.fencing - comment.value;
+    const fencingComment = input.fencingComment.value;
 
     //collecting teacher aid and learning material data
     const blackboard = input.blackboard.value;
-    const blackboardComment = input.blackboard - comment.value;
+    const blackboardComment = input.blackboardComment.value;
     const textbook = input.textbook.value;
-    const textbookComment = input.textbook - comment.value;
+    const textbookComment = input.textbookComment.value;
     const whiteboard = input.whiteboard.value;
-    const whiteboardComment = input.whiteboard - comment.value;
+    const whiteboardComment = input.whiteboardComment.value;
     const lessonNotes = input.lessonNotes.value;
-    const lessonNotesComment = input.lessonNotes - comment.value;
+    const lessonNotesComment = input.lessonNotesComment.value;
+    const curriculum = input.curriculum.value;
+    const curriculumComment = input.curriculumComment.value;
+    const eccdeLearningMaterials = input.eccdeLearningMaterials.value;
+    const elmComment = input.elmComment.value;
 
     //collecting Agric Farm Data
-    const agricFarm = input.agric - farm.value;
-    const agricFarmComment = input.agric - farm - comment.value;
+    const agricFarm = input.agricFarm.value;
+    const agricFarmComment = input.agricFarmComment.value;
 
     //collecting sports Facility Data
-    const sportFacility = input.sport - facility.value;
-    const sportFacilityComment = input.sport - facility - comment.value;
+    const sportFacility = input.sportFacility.value;
+    const sportFacilityComment = input.sportFacilityComment.value;
 
     const facilityData = {
       blocksOfClassrooms: blocksOfClassrooms,
-      pupilsNumOfClassroom: pupilsNumOfClassroom,
-      numPupilsComment: numPupilsComment,
-      numStudentsClassroom: numStudentsClassroom,
-      numStudentsComment: numStudentsComment,
+      nameOfSchool: nameOfSchool,
       numEccdeClassroom: numEccdeClassroom,
       numEccdeComment: numEccdeComment,
-      venPupils: venPupils,
-      venPupilsComment: venPupilsComment,
-      venStudents: venStudents,
-      venStudentsComment: venStudentsComment,
+      numPrimaryClassroom: numPrimaryClassroom,
+      numPrimaryClassroomComment: numPrimaryClassroomComment,
+      numUbeJssClassroom: numUbeJssClassroom,
+      numUbeJssClassroomComment: numUbeJssClassroomComment,
       venEccde: venEccde,
       venEccdeComment: venEccdeComment,
-      numFurniturePupils: numFurniturePupils,
-      numFurniturePupilsComment: numFurniturePupilsComment,
-      numFurnitureStudents: numFurnitureStudents,
-      numFurnitureStudentsComment: numFurnitureStudentsComment,
-      numFurnitureEccde: numFurnitureEccde,
-      numFurnitureEccdeComment: numFurnitureEccdeComment,
-      teacherFurniture: teacherFurniture,
-      teacherFurnitureComment: teacherFurnitureComment,
-      toiletPupils: toiletPupils,
-      toiletPupilsComment: toiletPupilsComment,
-      toiletStudents: toiletStudents,
-      toiletStudentsComment: toiletStudentsComment,
-      toiletEccde: toiletEccde,
-      toiletEccdeComment: toiletEccdeComment,
-      toiletTeachers: toiletTeachers,
-      toiletTeachersComment: toiletTeachersComment,
+      venPrimary: venPrimary,
+      venPrimaryComment: venPrimaryComment,
+      venUbeJss: venUbeJss,
+      venUbeJssComment: venUbeJssComment,
+      eccdeFurniture: eccdeFurniture,
+      eccdeFurnitureComment: eccdeFurnitureComment,
+      primaryFurniture: primaryFurniture,
+      primaryFurnitureComment: primaryFurnitureComment,
+      ubeJssFurniture: ubeJssFurniture,
+      ubeJssFurnitureComment: ubeJssFurnitureComment,
+      teachersFurniture: teachersFurniture,
+      teachersFurnitureComment: teachersFurnitureComment,
+      toilet: toilet,
+      toiletComment: toiletComment,
       fencing: fencing,
       fencingComment: fencingComment,
       blackboard: blackboard,
@@ -103,6 +99,10 @@ const handleFacilityFormData = () => {
       whiteboardComment: whiteboardComment,
       lessonNotes: lessonNotes,
       lessonNotesComment: lessonNotesComment,
+      curriculum: curriculum,
+      curriculumComment: curriculumComment,
+      eccdeLearningMaterials: eccdeLearningMaterials,
+      elmComment: elmComment,
       agricFarm: agricFarm,
       agricFarmComment: agricFarmComment,
       sportFacility: sportFacility,
@@ -110,16 +110,16 @@ const handleFacilityFormData = () => {
     };
 
     //making request to store the data in the database
-    fetch("https://usbeb-backend.onrender.com/api/v1/facilityCapture", {
+    fetch("https://usbeb-backend.onrender.com/api/v1/facilityData", {
       method: "POST",
       body: JSON.stringify(facilityData),
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
       },
     })
       .then((res) => res.json())
       .then((result) => {
+        document.getElementById("myForm").reset();
         alert(`${result.message}`);
       })
       .catch((error) => {
@@ -164,5 +164,3 @@ function toggleFields(event) {
 
 //creating facility
 handleFacilityFormData();
-//toggleForms
-toggleFields(event);

@@ -147,14 +147,25 @@
       <div id="container">
         <form action="" id="myForm" method="POST" enctype="multipart/form-data">
           <!-- Block of Classrooms -->
-          <div class="form-group">
-            <label for="blocks">Blocks of Classrooms</label>
-            <input
-              type="number"
-              id="blocks"
-              name="blocksOfClassroom"
-              placeholder="Enter number of blocks"
-            />
+          <div class="row">
+            <div class="field">
+              <label for="blocks">Blocks of Classrooms</label>
+              <input
+                type="number"
+                id="blocks"
+                name="blocksOfClassroom"
+                placeholder="Enter number of blocks"
+              />
+            </div>
+            <div class="comment">
+              <label for="blocks">Name Of School</label>
+              <input
+                type="text"
+                id="blocks"
+                name="nameOfSchool"
+                placeholder="Enter name of school"
+              />
+            </div>
           </div>
 
           <!-- Classrooms toggle -->
@@ -164,46 +175,10 @@
 
           <!-- Classroom subfields -->
           <div class="sub-section" id="classroomSubfields">
-            <!-- Pupils -->
-            <div class="row">
-              <div class="field">
-                <label for="pupils">Pupils Classrooms</label>
-                <input type="number" id="pupils" name="numPupilsClassroom" />
-              </div>
-              <div class="comment">
-                <label for="pupilsComment">Comment</label>
-                <textarea
-                  id="pupilsComment"
-                  name="numPupilsComment"
-                  rows="2"
-                ></textarea>
-              </div>
-            </div>
-
-            <!-- Students -->
-            <div class="row">
-              <div class="field">
-                <label for="students">Students Classrooms</label>
-                <input
-                  type="number"
-                  id="students"
-                  name="numStudentsClassroom"
-                />
-              </div>
-              <div class="comment">
-                <label for="studentsComment">Comment</label>
-                <textarea
-                  id="studentsComment"
-                  name="numStudentsComment"
-                  rows="2"
-                ></textarea>
-              </div>
-            </div>
-
             <!-- ECCDE -->
             <div class="row">
               <div class="field">
-                <label for="eccde">ECCDE Classrooms</label>
+                <label for="eccde">ECCDE</label>
                 <input type="number" id="eccde" name="numEccdeClassroom" />
               </div>
               <div class="comment">
@@ -211,6 +186,38 @@
                 <textarea
                   id="eccdeComment"
                   name="numEccdeComment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Primary -->
+            <div class="row">
+              <div class="field">
+                <label for="primary">Primary</label>
+                <input type="number" id="primary" name="numPrimaryClassroom" />
+              </div>
+              <div class="comment">
+                <label for="primaryComment">Comment</label>
+                <textarea
+                  id="primaryComment"
+                  name="numPrimaryComment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- UBE JSS -->
+            <div class="row">
+              <div class="field">
+                <label for="ubeJss">UBE JSS</label>
+                <input type="number" id="ubeJss" name="numUbeJssClassroom" />
+              </div>
+              <div class="comment">
+                <label for="Comment">Comment</label>
+                <textarea
+                  id="ubeUbeJssComment"
+                  name="numUbeJssComment"
                   rows="2"
                 ></textarea>
               </div>
@@ -224,51 +231,11 @@
 
           <!-- Ventilated subfields -->
           <div class="sub-section" id="ventilatedSubfields">
-            <!-- Pupils -->
-            <div class="row">
-              <div class="field">
-                <label for="pupils">Pupils</label>
-                <select type="number" id="pupils" name="pupils-ventilated">
-                  <option>Select an option</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </select>
-              </div>
-              <div class="comment">
-                <label for="pupilsComment">Comment</label>
-                <textarea
-                  id="pupilsComment"
-                  name="venPupilsComment"
-                  rows="2"
-                ></textarea>
-              </div>
-            </div>
-
-            <!-- Students -->
-            <div class="row">
-              <div class="field">
-                <label for="students">Students</label>
-                <select type="number" id="students" name="students-ventilated">
-                  <option>Select an option</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </select>
-              </div>
-              <div class="comment">
-                <label for="studentsComment">Comment</label>
-                <textarea
-                  id="studentsComment"
-                  name="venStudentsComment"
-                  rows="2"
-                ></textarea>
-              </div>
-            </div>
-
             <!-- ECCDE -->
             <div class="row">
               <div class="field">
                 <label for="eccde">ECCDE</label>
-                <select type="number" id="eccde" name="eccde-ventilated">
+                <select id="eccde" name="venEccde">
                   <option>Select an option</option>
                   <option>Yes</option>
                   <option>No</option>
@@ -283,6 +250,46 @@
                 ></textarea>
               </div>
             </div>
+
+            <!-- Primary -->
+            <div class="row">
+              <div class="field">
+                <label for="primary">Primary</label>
+                <select id="venPrimary" name="venPrimary">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option></select
+                >>
+              </div>
+              <div class="comment">
+                <label for="primaryComment">Comment</label>
+                <textarea
+                  id="venPrimaryComment"
+                  name="venPrimaryComment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- UBE JSS -->
+            <div class="row">
+              <div class="field">
+                <label for="ubeJss">UBE JSS</label>
+                <select id="ubeJss" name="venUbeJss">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="Comment">Comment</label>
+                <textarea
+                  id="venUbeUbeJssComment"
+                  name="venUbeJssComment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
           </div>
           <!--End of ventilated section-->
 
@@ -293,49 +300,61 @@
 
           <!-- Furniture subfields -->
           <div class="sub-section" id="furnitureSubfields">
-            <!-- Pupils -->
+            <!-- eccde -->
             <div class="row">
               <div class="field">
-                <label for="pupils">Pupils number</label>
-                <input type="number" id="pupils" name="pupils-furniture" />
-              </div>
-              <div class="comment">
-                <label for="pupilsComment">Comment</label>
-                <textarea
-                  id="pupilsComment"
-                  name="furniture-pupils-comment"
-                  rows="2"
-                ></textarea>
-              </div>
-            </div>
-
-            <!-- Students -->
-            <div class="row">
-              <div class="field">
-                <label for="students">Students Number</label>
-                <input type="number" id="students" name="students-furniture" />
-              </div>
-              <div class="comment">
-                <label for="studentsComment">Comment</label>
-                <textarea
-                  id="studentsComment"
-                  name="furniture-students-comment"
-                  rows="2"
-                ></textarea>
-              </div>
-            </div>
-
-            <!-- ECCDE -->
-            <div class="row">
-              <div class="field">
-                <label for="eccde">ECCDE Number</label>
-                <input type="number" id="eccde" name="eccde-furniture" />
+                <label for="eccde">ECCDE</label>
+                <input
+                  type="number"
+                  id="eecdeFurniture"
+                  name="eccdeFurniture"
+                />
               </div>
               <div class="comment">
                 <label for="eccdeComment">Comment</label>
                 <textarea
                   id="eccdeComment"
-                  name="eccde-furniture-comment"
+                  name="eccdeFurnitureComment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Primary -->
+            <div class="row">
+              <div class="field">
+                <label for="primary">Primary</label>
+                <input
+                  type="number"
+                  id="primaryFurniture"
+                  name="primaryFurniture"
+                />
+              </div>
+              <div class="comment">
+                <label for="primaryComment">Comment</label>
+                <textarea
+                  id="primaryComment"
+                  name="primaryFurnitureComment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- UbeJss -->
+            <div class="row">
+              <div class="field">
+                <label for="eccde">UBE JSS</label>
+                <input
+                  type="number"
+                  id="ubeJssFurniture"
+                  name="ubeJssFurniture"
+                />
+              </div>
+              <div class="comment">
+                <label for="ubeJssFurnitureComment">Comment</label>
+                <textarea
+                  id="ubeJssFurnitureComment"
+                  name="ubeJssFurnitureComment"
                   rows="2"
                 ></textarea>
               </div>
@@ -344,111 +363,47 @@
             <!--Teachers-->
             <div class="row">
               <div class="field">
-                <label for="eccde">Teachers Number</label>
-                <input type="number" id="eccde" name="teachers-furniture" />
-              </div>
-              <div class="comment">
-                <label for="eccdeComment">Comment</label>
-                <textarea
-                  id="eccdeComment"
-                  name="teachers-furniture-comment"
-                  rows="2"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-
-          <!--fourth section for Toilet Facility-->
-          <div class="section-toggle" onclick="toggleFields(event)">
-            Is Toilet Okay ?
-          </div>
-
-          <!-- Toilet facility subfields -->
-          <div class="sub-section" id="toiletSubfields">
-            <!-- Pupils -->
-            <div class="row">
-              <div class="field">
-                <label for="pupils">Pupils</label>
-                <select type="number" id="pupils" name="pupils-toilet-okay">
-                  <option>Select an option</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </select>
-              </div>
-              <div class="comment">
-                <label for="pupilsComment">Comment</label>
-                <textarea
-                  id="pupilsComment"
-                  name="pupils-toilet-comment"
-                  rows="2"
-                ></textarea>
-              </div>
-            </div>
-
-            <!-- Students -->
-            <div class="row">
-              <div class="field">
-                <label for="students">Students</label>
-                <select type="number" id="students" name="students-toilet-okay">
-                  <option>Select an option</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </select>
-              </div>
-              <div class="comment">
-                <label for="studentsComment">Comment</label>
-                <textarea
-                  id="studentsComment"
-                  name="students-toilet-comment"
-                  rows="2"
-                ></textarea>
-              </div>
-            </div>
-
-            <!-- ECCDE -->
-            <div class="row">
-              <div class="field">
-                <label for="eccde">ECCDE</label>
-                <select type="number" id="eccde" name="eccde-toilet-okay">
-                  <option>Select an option</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </select>
-              </div>
-              <div class="comment">
-                <label for="eccdeComment">Comment</label>
-                <textarea
-                  id="eccdeComment"
-                  name="eccde-toilet-comment"
-                  rows="2"
-                ></textarea>
-              </div>
-            </div>
-
-            <!--Teacher's toilet-->
-            <div class="row">
-              <div class="field">
                 <label for="eccde">Teachers</label>
-                <select type="number" id="eccde" name="toilet-teachers">
-                  <option>Select an option</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </select>
+                <input
+                  type="number"
+                  id="teachersFurniture"
+                  name="teachersFurniture"
+                />
               </div>
               <div class="comment">
-                <label for="eccdeComment">Comment</label>
+                <label for="teachersFurnitureComment">Comment</label>
                 <textarea
-                  id="eccdeComment"
-                  name="toilet-teachers-comment"
+                  id="teachersFurnitureComment"
+                  name="teachersFurnitureComment"
                   rows="2"
                 ></textarea>
               </div>
             </div>
           </div>
-          <!--End of Toilet Facility section-->
+
+          <!--section 4 Toilet-->
+          <div class="row" style="padding: 1.5rem 0">
+            <div class="field">
+              <label for="blocks">Toilet ?</label>
+              <select id="blocks" name="toilet">
+                <option>Select an option</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="comment">
+              <label for="toiletComment">Comment</label>
+              <textarea
+                id="eccdeComment"
+                name="toiletComment"
+                rows="2"
+              ></textarea>
+            </div>
+          </div>
+          <!--End of fencing section here-->
 
           <!--section 5 fencing-->
-          <div class="row" style="padding: 3rem 0">
+          <div class="row" style="padding: 1.5rem 0">
             <div class="field">
               <label for="blocks">Fencing ?</label>
               <select id="blocks" name="fencing">
@@ -458,10 +413,10 @@
               </select>
             </div>
             <div class="comment">
-              <label for="fencing-omment">Comment</label>
+              <label for="fencingComment">Comment</label>
               <textarea
                 id="eccdeComment"
-                name="fencing-comment"
+                name="fencingComment"
                 rows="2"
               ></textarea>
             </div>
@@ -478,18 +433,18 @@
             <!-- Blackboard -->
             <div class="row">
               <div class="field">
-                <label for="pupils">Blackboard</label>
-                <select type="number" id="pupils" name="blackboard">
+                <label for="blackboard">Blackboard</label>
+                <select type="number" id="blackboard" name="blackboard">
                   <option>Select an option</option>
                   <option>Yes</option>
                   <option>No</option>
                 </select>
               </div>
               <div class="comment">
-                <label for="pupilsComment">Comment</label>
+                <label for="blackboardComment">Comment</label>
                 <textarea
-                  id="pupilsComment"
-                  name="blackboard-comment"
+                  id="blackboardComment"
+                  name="blackboardComment"
                   rows="2"
                 ></textarea>
               </div>
@@ -498,18 +453,18 @@
             <!-- Text Book -->
             <div class="row">
               <div class="field">
-                <label for="students">Textbook</label>
-                <select type="number" id="students" name="textbook">
+                <label for="textbook">Textbook</label>
+                <select id="textbook" name="textbook">
                   <option>Select an option</option>
                   <option>Yes</option>
                   <option>No</option>
                 </select>
               </div>
               <div class="comment">
-                <label for="studentsComment">Comment</label>
+                <label for="textbookComment">Comment</label>
                 <textarea
                   id="studentsComment"
-                  name="textbook-comment"
+                  name="textbookComment"
                   rows="2"
                 ></textarea>
               </div>
@@ -518,18 +473,18 @@
             <!-- White Board -->
             <div class="row">
               <div class="field">
-                <label for="eccde">White Board</label>
-                <select type="number" id="eccde" name="whiteboard">
+                <label for="whiteboard">White Board</label>
+                <select type="number" id="whiteboard" name="whiteboard">
                   <option>Select an option</option>
                   <option>Yes</option>
                   <option>No</option>
                 </select>
               </div>
               <div class="comment">
-                <label for="eccdeComment">Comment</label>
+                <label for="whiteboardComment">Comment</label>
                 <textarea
-                  id="eccdeComment"
-                  name="whiteboard-comment"
+                  id="whiteboardComment"
+                  name="whiteboardComment"
                   rows="2"
                 ></textarea>
               </div>
@@ -537,8 +492,48 @@
             <!--Lesson Notes-->
             <div class="row">
               <div class="field">
-                <label for="eccde">Lesson Notes</label>
-                <select type="number" id="eccde" name="lessonNotes">
+                <label for="lessonNotes">Lesson Notes</label>
+                <select type="number" id="lessonNotes" name="lessonNotes">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="lessonNotesComment">Comment</label>
+                <textarea
+                  id="lessonNotesComment"
+                  name="lessonNotesComment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!--curriculum-->
+            <div class="row">
+              <div class="field">
+                <label for="curriculum">Currriculum</label>
+                <select id="curriculum" name="curriculum">
+                  <option>Select an option</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="comment">
+                <label for="curriculumComment">Comment</label>
+                <textarea
+                  id="curriculumComment"
+                  name="curriculumComment"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+
+            <!--ECCDE Learning Materials-->
+            <div class="row">
+              <div class="field">
+                <label for="eccde">ECCDE Learning Materials</label>
+                <select id="eccde" name="eccdeLearningMaterials">
                   <option>Select an option</option>
                   <option>Yes</option>
                   <option>No</option>
@@ -548,7 +543,7 @@
                 <label for="eccdeComment">Comment</label>
                 <textarea
                   id="eccdeComment"
-                  name="lessonNotes-comment"
+                  name="elmComment"
                   rows="2"
                 ></textarea>
               </div>
@@ -557,10 +552,10 @@
           <!--End of teaching aid and learning materials-->
 
           <!--section 7 Agric Farm-->
-          <div class="row" style="padding: 3rem 0">
+          <div class="row" style="padding: 1.5rem 0">
             <div class="field">
               <label for="blocks">Agric Farm ?</label>
-              <select id="blocks" name="agric-farm">
+              <select id="blocks" name="agricFarm">
                 <option>Select an option</option>
                 <option>Yes</option>
                 <option>No</option>
@@ -570,7 +565,7 @@
               <label for="Comment">Comment </label>
               <textarea
                 id="eccdeComment"
-                name="agric-farm-comment"
+                name="agricFarmComment"
                 rows="2"
               ></textarea>
             </div>
@@ -581,7 +576,7 @@
           <div class="row" style="padding: 1rem 0">
             <div class="field">
               <label for="blocks">Sport Facility ?</label>
-              <select id="blocks" name="sport-facility">
+              <select id="blocks" name="sportFacility">
                 <option>Select an option</option>
                 <option>Yes</option>
                 <option>No</option>
@@ -591,16 +586,13 @@
               <label for="comment">Comment</label>
               <textarea
                 id="eccdeComment"
-                name="sport-facility-comment"
+                name="sportFacilityComment"
                 rows="2"
               ></textarea>
             </div>
           </div>
           <!--End of Agric Farm section here-->
           <div id="form-area4">
-            <button id="clear-form" type="button">
-              <span>Clear Form</span>
-            </button>
             <button type="submit" id="submit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -629,6 +621,5 @@
       <!--End of container div-->
     </div>
     <script src="./javascript/facility.js"></script>
-    <script src="./javascript/pupils.js"></script>
   </body>
 </html>

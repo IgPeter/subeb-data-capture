@@ -1,5 +1,4 @@
-let fingerprintData = null;
-
+//let fingerprintData = null;
 const handleFileSelect = async () => {
   document.getElementById("uploadBtn").addEventListener("click", () => {
     document.querySelector(".hidden").click();
@@ -16,10 +15,12 @@ const handleFileSelect = async () => {
 
         const uploadArea = document.getElementById("form-sec2");
         const imgDiv = document.createElement("div");
+        imgDiv.id = "uploadImgDiv";
         const uploadedImg = document.createElement("img");
         uploadedImg.src = URL.createObjectURL(file);
 
         alert("file added");
+
         imgDiv.appendChild(uploadedImg);
         uploadArea.appendChild(imgDiv);
         imgDiv.style.maxWidth = "15%";
@@ -50,6 +51,7 @@ const handleFormUpload = async () => {
       const file = formInput.passport.files[0];
 
       const fullName = formInput.fullName.value;
+      const nameOfSchool = formInput.nameOfSchool.value;
       const classNumber = formInput.classID.value;
       const dateOfBirth = formInput.dateOfBirth.value;
       const age = formInput.age.value;
@@ -64,6 +66,7 @@ const handleFormUpload = async () => {
       const formData = new FormData();
 
       formData.append("fullName", fullName);
+      formData.append("nameOfSchool", nameOfSchool);
       formData.append("classID", classNumber);
       formData.append("dateOfBirth", dateOfBirth);
       formData.append("age", age);
@@ -75,8 +78,8 @@ const handleFormUpload = async () => {
       formData.append("disability", disability);
       formData.append("disabilityInfo", resInput);
       formData.append("passport", file);
-      formData.append("fingerprintImage", fingerprintData.BitmapData); // base64 string
-      formData.append("fingerprintTemplate", fingerprintData.TemplateBase64); // base64 string
+      //formData.append("fingerprintImage", fingerprintData.BitmapData); // base64 string
+      //formData.append("fingerprintTemplate", fingerprintData.TemplateBase64); // base64 string
 
       if (!file || !file.type.startsWith("image/")) {
         alert("Upload passport photograph");
@@ -98,15 +101,17 @@ const handleFormUpload = async () => {
         return;
       }
 
+      clearForm();
       alert("User information is created successfully");
     });
 };
 
-const clearForm = () => {
-  document.getElementById("clear-form").addEventListener("click", () => {
-    document.getElementById("myForm").reset();
-  });
-};
+function clearForm() {
+  const uploadArea = document.getElementById("form-sec2");
+  const uploadImgDiv = document.getElementById("uploadImgDiv");
+  uploadArea.removeChild(uploadImgDiv);
+  document.getElementById("myForm").reset();
+}
 
 displayOtherDisabilityField = () => {
   document.getElementById("disability").addEventListener("change", (event) => {
@@ -197,7 +202,5 @@ const fail = (status) => {
 
 displayOtherDisabilityField();
 handleFormUpload();
-xmlSecuGenHandler();
-//handleFingerprintScanning();
+//xmlSecuGenHandler();
 handleFileSelect();
-clearForm();

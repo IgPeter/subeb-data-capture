@@ -1,7 +1,8 @@
+//Global variables for the finger print and open cage api key;
 let fingerprintData = null;
-
 const OPENCAGE_API_KEY = "62ebbe3af66b45c9bebbb33f77a316c9";
 
+//get location function
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(handleLocation, showError);
@@ -10,6 +11,7 @@ function getLocation() {
   }
 }
 
+//handle location function to be used by getLocation
 function handleLocation(position) {
   const { latitude, longitude } = position.coords;
 
@@ -61,6 +63,7 @@ function handleLocation(position) {
     .catch((err) => console.error("Geocoding error:", err));
 }
 
+//show error used by getLocation
 function showError(error) {
   console.error("Geolocation error:", error.message);
 }
@@ -81,6 +84,7 @@ const handleFileSelect = async () => {
 
         const uploadArea = document.getElementById("form-sec2");
         const imgDiv = document.createElement("div");
+        imgDiv.id = "uploadImgDiv";
         const uploadedImg = document.createElement("img");
         uploadedImg.src = URL.createObjectURL(file);
 
@@ -91,6 +95,7 @@ const handleFileSelect = async () => {
         imgDiv.style.maxHeight = "15%";
         uploadedImg.style.maxWidth = "100%";
         uploadedImg.style.maxHight = "100%";
+
         uploadedImg.onload = URL.revokeObjectURL(uploadedImg.src);
       });
   });
@@ -99,6 +104,7 @@ const handleFileSelect = async () => {
     alert("You ought to upload an image here ");
   });
 };
+//handle file select ends here.
 
 const handleFormUpload = async () => {
   document
@@ -106,10 +112,10 @@ const handleFormUpload = async () => {
     .addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      /*if (!fingerprintData) {
+      if (!fingerprintData) {
         alert("Please scan fingerprint before submit");
         return;
-      }*/
+      }
 
       const locationInfo = { ...window.userLocationData };
       const formInput = event.target;
@@ -117,7 +123,6 @@ const handleFormUpload = async () => {
 
       const fullName = formInput.fullName.value;
       const staffId = formInput.staffId.value;
-      const ppaTeacher = formInput.ppaTeachers.value;
       const dateOfBirth = formInput.dateOfBirth.value;
       const gender = formInput.gender.value;
       const nameOfSchool = formInput.nameOfSchool.value;
@@ -132,7 +137,6 @@ const handleFormUpload = async () => {
 
       formData.append("fullName", fullName);
       formData.append("staffId", staffId);
-      formData.append("ppa-teacher", ppaTeacher);
       formData.append("dateOfBirth", dateOfBirth);
       formData.append("gender", gender);
       formData.append("nameOfSchool", nameOfSchool);
@@ -154,7 +158,7 @@ const handleFormUpload = async () => {
 
       //handling file upload here
       const res = await fetch(
-        "https://usbeb-backend.onrender.com/api/v1/captureDevice",
+        "https://usbeb-backend.onrender.com/api/v1/staffData",
         {
           method: "POST",
           body: formData,
@@ -171,10 +175,17 @@ const handleFormUpload = async () => {
         return;
       }
 
-      document.getElementById("myForm").reset();
+      clearForm();
       alert("User information is created successfully");
     });
 };
+
+function clearForm() {
+  const uploadArea = document.getElementById("form-sec2");
+  const uploadImgDiv = document.getElementById("uploadImgDiv");
+  uploadArea.removeChild(uploadImgDiv);
+  document.getElementById("myForm").reset();
+}
 
 const xmlSecuGenHandler = () => {
   document.getElementById("scannowID").addEventListener("click", () => {
@@ -240,9 +251,7 @@ const fail = (status) => {
 };
 
 handleFormUpload();
-//handleFingerprintScanning();
-xmlSecuGenHandler();
+//xmlSecuGenHandler();
 handleFileSelect();
-//clearForm();
 
 window.onload = getLocation();
