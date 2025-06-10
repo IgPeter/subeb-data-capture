@@ -86,6 +86,8 @@ const handleFormUpload = async () => {
         return;
       }
 
+      console.log("trying to make a request");
+
       //handling file upload here
       const res = await fetch(
         "https://usbeb-backend.onrender.com/api/v1/studentData",
