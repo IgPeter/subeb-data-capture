@@ -265,6 +265,11 @@ p {
   height: 4rem;
 }
 
+#disabilityCon {
+  display: none;
+  margin-top: 1rem;
+}
+
 /* Optional: Responsive stacking for mobile */
 @media (max-width: 768px) {
   body {

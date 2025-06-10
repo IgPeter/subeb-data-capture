@@ -115,27 +115,16 @@ function clearForm() {
 
 displayOtherDisabilityField = () => {
   document.getElementById("disability").addEventListener("change", (event) => {
-    if (event.target.value == "yes") {
-      const disabilitySelect = document.getElementById("disability-select");
-      const responseInput = document.createElement("input");
-      responseInput.name = "disabilityInfo" || "";
-      responseInput.type = "text";
-      responseInput.placeholder = "Give information of the disability";
-      responseInput.value = "";
-      responseInput.style.marginTop = "1rem";
+    const disabilityCon = document.getElementById("disabilityCon");
+    const disabilityInfo =document.getElementById("disabilityInfo");
 
-      disabilitySelect.appendChild(responseInput);
-
-      responseInput.addEventListener("change", (event) => {
-        responseInput.value = event.target.value;
-      });
-
-      responseInput.addEventListener("focusout", () => {
-        responseInput.style.display = "none";
-      });
-
-      console.log(responseInput.value);
+    if(event.target.value == "yes") {
+      disabilityCon.style.display = "block";  
+    }else {
+      disabilityCon.style.display = "none";
+      disabilityInfo.value = '';
     }
+    
   });
 };
 
