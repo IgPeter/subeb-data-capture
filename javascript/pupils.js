@@ -1,4 +1,91 @@
 //let fingerprintData = null;
+
+const updateErrorsInfo = (errorDivTextParam, inputDiv, input) => {
+  const errorDiv = document.createElement("div");
+  const errorDivText = document.createElement("p");
+
+  errorDivText.innerHTML = errorDivTextParam;
+
+  input.style.borderColor = "#ff0000";
+  input.style.borderWidth = "1.5px";
+  errorDivText.style.color = "#ff0000";
+  errorDiv.append(errorDivText);
+  inputDiv.append(errorDiv);
+};
+
+const displayErrors = (
+  fullName,
+  nameOfSchool,
+  classNumber,
+  dateOfBirth,
+  age,
+  sex,
+  address,
+  parents,
+  lga,
+  disability
+) => {
+  if (fullName == "") {
+    const inputDiv = document.getElementById("nameOfPupilsDiv");
+    const input = document.getElementById("nameOfPupils");
+    updateErrorsInfo("Name is equired", inputDiv, input);
+  }
+
+  if (classNumber == "") {
+    const inputDiv = document.getElementById("classIdDiv");
+    const input = document.getElementById("classId");
+    updateErrorsInfo("Class Id is required", inputDiv, input);
+  }
+
+  if (dateOfBirth == "") {
+    const inputDiv = document.getElementById("dateOfBirthDiv");
+    const input = document.getElementById("dateOfBirth");
+    updateErrorsInfo("Date of birth is required", inputDiv, input);
+  }
+
+  if (sex == "") {
+    const inputDiv = document.getElementById("sexDiv");
+    const input = document.getElementById("sex");
+    updateErrorsInfo("sex is required", inputDiv, input);
+  }
+
+  if (nameOfSchool == "") {
+    const inputDiv = document.getElementById("nameOfSchoolDiv");
+    const input = document.getElementById("nameOfSchool");
+    updateErrorsInfo("Name of school is required", inputDiv, input);
+  }
+
+  if (age == "") {
+    const inputDiv = document.getElementById("ageDiv");
+    const input = document.getElementById("age");
+    updateErrorsInfo("Contact is required", inputDiv, input);
+  }
+
+  if (address == "") {
+    const inputDiv = document.getElementById("addressDiv");
+    const input = document.getElementById("address");
+    updateErrorsInfo("Address is required", inputDiv, input);
+  }
+
+  if (parents == "") {
+    const inputDiv = document.getElementById("parentsDiv");
+    const input = document.getElementById("parents");
+    updateErrorsInfo("Parents Information is required", inputDiv, input);
+  }
+
+  if (disability == "") {
+    const inputDiv = document.getElementById("disability-select");
+    const input = document.getElementById("disability");
+    updateErrorsInfo("Disability is required", inputDiv, input);
+  }
+
+  if (lga == "") {
+    const inputDiv = document.getElementById("lgaDiv");
+    const input = document.getElementById("lga");
+    updateErrorsInfo("LGA is required", inputDiv, input);
+  }
+};
+
 const handleFileSelect = async () => {
   document.getElementById("uploadBtn").addEventListener("click", () => {
     document.querySelector(".hidden").click();
@@ -63,6 +150,19 @@ const handleFormUpload = async () => {
       const disability = formInput.disability.value;
       const resInput = formInput.disabilityInfo.value;
 
+      displayErrors(
+        fullName,
+        nameOfSchool,
+        classNumber,
+        dateOfBirth,
+        age,
+        sex,
+        address,
+        parents,
+        lga,
+        disability
+      );
+
       const formData = new FormData();
 
       formData.append("fullName", fullName);
@@ -85,8 +185,6 @@ const handleFormUpload = async () => {
         alert("Upload passport photograph");
         return;
       }
-
-      console.log("trying to make a request");
 
       //handling file upload here
       const res = await fetch(

@@ -2,6 +2,117 @@
 let fingerprintData = null;
 const OPENCAGE_API_KEY = "62ebbe3af66b45c9bebbb33f77a316c9";
 
+const updateErrorsInfo = (
+  errorDivTextParam,
+  errorDiv,
+  errorDivText,
+  inputDiv,
+  input
+) => {
+  errorDivText.innerHTML = errorDivTextParam;
+
+  input.style.borderColor = "#ff0000";
+  input.style.borderWidth = "1.5px";
+  errorDivText.style.color = "#ff0000";
+  errorDiv.append(errorDivText);
+  inputDiv.append(errorDiv);
+};
+
+const resetErrorInfo = (errorDiv, errorDivText, inputDiv, input) => {
+  input.style.borderColor = "#404040";
+  errorDivText = "";
+  inputDiv.removeChild(errorDiv);
+};
+
+const displayErrors = (
+  fullName,
+  staffId,
+  dateOfBirth,
+  gender,
+  nameOfSchool,
+  contact,
+  address,
+  dateOfFA,
+  dateOfLP,
+  nin,
+  lga
+) => {
+  const errorDiv = document.createElement("div");
+  const errorDivText = document.createElement("p");
+
+  if (fullName == "") {
+    const inputDiv = document.getElementById("fullNameDiv");
+    const input = document.getElementById("fullName");
+    updateErrorsInfo(
+      "Full name is required",
+      errorDiv,
+      errorDivText,
+      inputDiv,
+      input
+    );
+  }
+
+  if (staffId == "") {
+    const inputDiv = document.getElementById("staffIdDiv");
+    const input = document.getElementById("staffID");
+    updateErrorsInfo("Staff Id is required", inputDiv, input);
+  }
+
+  if (dateOfBirth == "") {
+    const inputDiv = document.getElementById("dateOfBirthDiv");
+    const input = document.getElementById("dateOfBirth");
+    updateErrorsInfo("Date Of Birth Is Required", inputDiv, input);
+  }
+
+  if (gender == "") {
+    const inputDiv = document.getElementById("genderDiv");
+    const input = document.getElementById("gender");
+    updateErrorsInfo("Gender is required", inputDiv, input);
+  }
+
+  if (nameOfSchool == "") {
+    const inputDiv = document.getElementById("nameOfSchoolDiv");
+    const input = document.getElementById("nameOfSchool");
+    updateErrorsInfo("Name Of School Is Required", inputDiv, input);
+  }
+
+  if (contact == "") {
+    const inputDiv = document.getElementById("contactDiv");
+    const input = document.getElementById("contact");
+    updateErrorsInfo("Contact Is Required", inputDiv, input);
+  }
+
+  if (address == "") {
+    const inputDiv = document.getElementById("addressDiv");
+    const input = document.getElementById("address");
+    updateErrorsInfo("Address Is Required", inputDiv, input);
+  }
+
+  if (dateOfFA == "") {
+    const inputDiv = document.getElementById("dateOfFADiv");
+    const input = document.getElementById("dateOfFA");
+    updateErrorsInfo("Date Of First Appointment Is Required", inputDiv, input);
+  }
+
+  if (dateOfLP == "") {
+    const inputDiv = document.getElementById("dateOfLPDiv");
+    const input = document.getElementById("dateOfLP");
+    updateErrorsInfo("Date Of First Appointment Is Required", inputDiv, input);
+  }
+
+  if (nin == "") {
+    const inputDiv = document.getElementById("ninDiv");
+    const input = document.getElementById("nin");
+    updateErrorsInfo("NIN Is Required", inputDiv, input);
+  }
+
+  if (lga == "") {
+    const inputDiv = document.getElementById("lgaDiv");
+    const input = document.getElementById("lga");
+    updateErrorsInfo("LGA Is Required", inputDiv, input);
+  }
+};
+
 //get location function
 function getLocation() {
   if (navigator.geolocation) {
@@ -112,12 +223,8 @@ const handleFormUpload = async () => {
     .addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      if (!fingerprintData) {
-        alert("Please scan fingerprint before submit");
-        return;
-      }
-
       const locationInfo = { ...window.userLocationData };
+
       const formInput = event.target;
       const file = formInput.passport.files[0];
 
@@ -132,6 +239,20 @@ const handleFormUpload = async () => {
       const dateOfLP = formInput.dateOfLP.value;
       const nin = formInput.nin.value;
       const lga = formInput.lga.value;
+
+      displayErrors(
+        fullName,
+        staffId,
+        dateOfBirth,
+        gender,
+        nameOfSchool,
+        contact,
+        address,
+        dateOfFA,
+        dateOfLP,
+        nin,
+        lga
+      );
 
       const formData = new FormData();
 
@@ -153,6 +274,11 @@ const handleFormUpload = async () => {
 
       if (!file || !file.type.startsWith("image/")) {
         alert("Upload passport photograph");
+        return;
+      }
+
+      if (!fingerprintData) {
+        alert("Please scan fingerprint before submit");
         return;
       }
 
